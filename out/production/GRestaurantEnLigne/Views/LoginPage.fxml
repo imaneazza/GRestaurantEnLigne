@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <children>
+      <Button layoutX="200.0" layoutY="293.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="25.0" prefWidth="92.0" text="Connect">
+         <font>
+            <Font name="Cambria" size="17.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtUsername" layoutX="147.0" layoutY="145.0" promptText="Type UserName">
+         <font>
+            <Font name="Cambria" size="17.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="txtPassword" layoutX="147.0" layoutY="220.0" promptText="Type Password">
+         <font>
+            <Font name="Cambria" size="17.0" />
+         </font>
+      </PasswordField>
+      <Label fx:id="lblStatus" layoutX="129.0" layoutY="76.0" prefHeight="33.0" prefWidth="239.0" text="Status : Disconnected" textFill="#f20d0d">
+         <font>
+            <Font name="Cambria" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
