@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import Classes.Ingrediant;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ public class Price {
     private int id;
     private Date date;
     private float price;
-    private Ingredient ingredient=null;
+    private Ingrediant ingredient=null;
     public Price() {
     }
     public Price(int id,Date date,float price) {
@@ -23,7 +24,7 @@ public class Price {
         this.date=date;
         this.price=price;
     }
-    public Price(int id,Date date,float price,Ingredient ingredient) {
+    public Price(int id,Date date,float price,Ingrediant ingredient) {
         this.id=id;
         this.date=date;
         this.price=price;
@@ -57,14 +58,14 @@ public class Price {
     /**
      * @return the ingredient
      */
-    public Ingredient getIngredient() {
+    public Ingrediant getIngredient() {
         return ingredient;
     }
 
     /**
      * @param ingredient the ingredient to set
      */
-    public void setIngredient(Ingredient ingredient) {
+    public void setIngredient(Ingrediant ingredient) {
         this.ingredient = ingredient;
     }
 

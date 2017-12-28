@@ -1,9 +1,8 @@
 package DAO;
 
-import java.util.Date;
-import java.util.HashMap;
-import Classes.Ingredient;
-import Classes.Price;
+import java.util.ArrayList;
+import Classes.Ingrediant;
+import  Classes.Price;
 
 /**
  *
@@ -11,5 +10,6 @@ import Classes.Price;
  */
 
 interface IDAOPrice extends IDAO<Price>{
-    HashMap<Integer,Price> findByIngredient(Ingredient ingredient);
+
+    public ArrayList<Price> findByIngrediant(Ingrediant ingrediant);
 }

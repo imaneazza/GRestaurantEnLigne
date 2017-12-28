@@ -7,12 +7,12 @@ package  DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import  Classes.Detail;
 import  Classes.Form;
-import  Classes.Ingredient;
+import  Classes.Ingrediant;
 import  DBLinking.DAO;
 
 /**
@@ -34,14 +34,14 @@ public class DAODetail extends DAO implements IDAODetail {
     }
 
     @Override
-    public int create(Detail o) {
-        statement = createStatement("INSERT INTO detail(formId,ingredientId,obligatory,qteMin,qteMax) Values(?,?,?,?,?);");
+    public int executeQuery(String query, Detail o) {
+        statement = createStatement(query);
         try {
-            statement.setInt(1, o.getForm().getId());
-            statement.setInt(2, o.getIngredient().getId());
-            statement.setBoolean(3, o.getObligatory());
-            statement.setInt(4, o.getMin());
-            statement.setInt(5, o.getMax());
+            statement.setBoolean(1, o.getObligatory());
+            statement.setInt(2, o.getMin());
+            statement.setInt(3, o.getMax());
+            statement.setInt(4, o.getFormId());
+            statement.setInt(5, o.getIngredient().getId());
             return statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,19 +50,29 @@ public class DAODetail extends DAO implements IDAODetail {
     }
 
     @Override
-    public int update(Detail o) {
-        statement = createStatement("UPDATE detail SET obligatory=?,qteMin=?,qteMax=? WHERE formId=?,ingredientId=?;");
+    public ArrayList<Detail> executeToArray() {
+
         try {
-            statement.setBoolean(1, o.getObligatory());
-            statement.setInt(2, o.getMin());
-            statement.setInt(3, o.getMax());
-            statement.setInt(4, o.getForm().getId());
-            statement.setInt(5, o.getIngredient().getId());
-            return statement.executeUpdate();
+            ResultSet rs = statement.executeQuery();
+            ArrayList<Detail> list = new ArrayList<Detail>();
+            while (rs.next()) {
+                list.add(ResultSetToObject(rs));
+            }
+            return list;
         } catch (SQLException ex) {
             Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
+        return null;
+    }
+
+    @Override
+    public int create(Detail o) {
+        return  executeQuery("INSERT INTO detail(obligatory,qteMin,qteMax,formId,ingredientId) Values(?,?,?,?,?);",o);
+    }
+
+    @Override
+    public int update(Detail o) {
+        return  executeQuery("UPDATE detail SET obligatory=?,qteMin=?,qteMax=? WHERE formId=?,ingredientId=?;",o);
 
     }
 
@@ -84,12 +94,7 @@ public class DAODetail extends DAO implements IDAODetail {
             statement = createStatement("SELECT * FROM form WHERE id=?;");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                Detail o = ResultSetToObject(rs);
-                o.setForm(daoForm.find(rs.getInt(formId)));
-                o.setIngredient(daoIngredient.find(rs.getInt(ingredientId)));
-                return o;
-            }
+            if (rs.next()) return ResultSetToObject(rs);
         } catch (SQLException ex) {
             Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -101,27 +106,44 @@ public class DAODetail extends DAO implements IDAODetail {
      * @return
      */
     @Override
-    public HashMap<Integer, Detail> getAll() {
-        HashMap<Integer, Detail> list = new HashMap<Integer, Detail>();
+    public ArrayList<Detail> getAll() {
+        statement = createStatement("SELECT * FROM form");
+        return executeToArray();
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public ArrayList<Detail> findByForm(Form o) {
+        return findByInt("SELECT * FROM form WHERE formId=?",o.getId());
+    }
+
+    @Override
+    public ArrayList<Detail> findByIngrediant(Ingrediant o) {
+        return findByInt("SELECT * FROM form WHERE ingrediantId=?",o.getId());
+    }
+
+    public ArrayList<Detail> findByInt(String query, int value) {
         try {
-            statement = createStatement("SELECT * FROM form");
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Detail o = ResultSetToObject(rs);
-                o.setForm(daoForm.find(rs.getInt(formId)));
-                o.setIngredient(daoIngredient.find(rs.getInt(ingredientId)));
-                list.put(list.size(), o);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
+            statement = createStatement(query);
+            statement.setInt(1,value);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return list;
+        return executeToArray();
     }
 
     @Override
     public Detail ResultSetToObject(ResultSet rs) {
         try {
-            Detail o = new Detail(rs.getBoolean(obligatory), rs.getInt(qteMin), rs.getInt(qteMax));
+            Detail o = new Detail(
+                    rs.getInt(formId),
+                    daoIngredient.find(rs.getInt(ingredientId)),
+                    rs.getBoolean(obligatory), rs.getInt(qteMin),
+                    rs.getInt(qteMax)
+            );
             return o;
         } catch (SQLException ex) {
             Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,47 +151,5 @@ public class DAODetail extends DAO implements IDAODetail {
         return null;
     }
 
-    /**
-     *
-     * @param o
-     * @return
-     */
-    @Override
-    public HashMap<Integer, Detail> findByForm(Form form) {
-        HashMap<Integer, Detail> list = new HashMap<Integer, Detail>();
-        try {
-            statement = createStatement("SELECT * FROM detail WHERE formId=?;");
-            statement.setInt(1, form.getId());
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Detail o = ResultSetToObject(rs);
-                o.setForm(form);
-                o.setIngredient(daoIngredient.find(rs.getInt(ingredientId)));
-                list.put(list.size(), o);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
-
-    @Override
-    public HashMap<Integer, Detail> findByIngredient(Ingredient ingredient) {
-        HashMap<Integer, Detail> list = new HashMap<Integer, Detail>();
-        try {
-            statement = createStatement("SELECT * FROM detail WHERE ingredientId=?;");
-            statement.setInt(1, ingredient.getId());
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Detail o = ResultSetToObject(rs);
-                o.setForm(daoForm.find(rs.getInt(formId)));
-                o.setIngredient(ingredient);
-                list.put(list.size(), o);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
 
 }

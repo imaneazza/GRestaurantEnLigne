@@ -5,36 +5,37 @@
  */
 package Classes;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.ArrayList;
 
 /**
  *
  * @author inknown
  */
 public class Category {
+
     private int id;
-    private String name,imageSource;
-    private Map<Integer,Ingredient> ingredients;
+    private String name, imageSource;
+    private ArrayList<Ingrediant> ingrediants;
+
     public Category() {
-        this.id=-1;
-        name="inknown";
-        imageSource="inknown";
-        this.ingredients = new HashMap<Integer,Ingredient>();
-    }
-    public Category(int id,String name,String imageSource,HashMap<Integer,Ingredient> ingredients) {
-        this.id=id;
-        this.name=name;
-        this.imageSource=imageSource;
-        this.ingredients.putAll(ingredients);
-    }
-        public Category(int id,String name,String imageSource) {
-        this.id=id;
-        this.name=name;
-        this.imageSource=imageSource;
+        this.id = -1;
+        name = "inknown";
+        imageSource = "inknown";
+        this.ingrediants = new ArrayList<Ingrediant>();
     }
 
+    public Category(int id, String name, String imageSource) {
+        this.id = id;
+        this.name = name;
+        this.imageSource = imageSource;
+        this.ingrediants = new ArrayList<Ingrediant>();
+    }
+    public Category(int id, String name, String imageSource,ArrayList<Ingrediant> ingrediants) {
+        this.id = id;
+        this.name = name;
+        this.imageSource = imageSource;
+        this.ingrediants = ingrediants;
+    }
 
     /**
      * @return the id
@@ -78,17 +79,17 @@ public class Category {
         this.imageSource = imageSource;
     }
 
-    /**
-     * @return the ingredients
-     */
-    public Map<Integer,Ingredient> getIngredients() {
-        return ingredients;
+
+    public Ingrediant findIngrediant(int id){
+        for(Ingrediant i :ingrediants)  if(i.getId()==id) return i;
+        return null;
     }
 
-    /**
-     * @param ingredients the ingredients to set
-     */
-    public void setIngredients(Map<Integer,Ingredient> ingredients) {
-        this.ingredients = ingredients;
+    public ArrayList<Ingrediant> getIngrediants() {
+        return ingrediants;
+    }
+
+    public void setIngrediants(ArrayList<Ingrediant> ingrediants) {
+        this.ingrediants = ingrediants;
     }
 }

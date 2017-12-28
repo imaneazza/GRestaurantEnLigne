@@ -11,8 +11,8 @@ package Classes;
  */
 public class Detail {
 
-    private Form form = null;
-    private Ingredient ingredient = null;
+    private Ingrediant ingredient = null;
+    private int formId;
     private boolean isObligatory = false;
     private int max = 0;
     private int min = 0;
@@ -20,8 +20,8 @@ public class Detail {
     public Detail() {
     }
 
-    public Detail(Form form, Ingredient ingredient, boolean isObligatory, int min, int max) {
-        this.form = form;
+    public Detail(int formId, Ingrediant ingredient, boolean isObligatory, int min, int max) {
+        this.formId=formId;
         this.ingredient = ingredient;
         this.isObligatory = isObligatory;
         if (max > min) {
@@ -32,7 +32,16 @@ public class Detail {
             this.min = max;
         }
     }
-    public Detail(boolean isObligatory, int min, int max) {
+    public Detail(int form, Ingrediant ingredient,int quantity) {
+        this.formId=formId;
+        this.ingredient = ingredient;
+        this.isObligatory = true;
+        this.max = quantity;
+        this.min = quantity;
+    }
+    public Detail(Form form, Ingrediant ingredient, boolean isObligatory, int min, int max) {
+        this.formId=form.getId();
+        this.ingredient = ingredient;
         this.isObligatory = isObligatory;
         if (max > min) {
             this.max = max;
@@ -42,32 +51,26 @@ public class Detail {
             this.min = max;
         }
     }
-
-    /**
-     * @return the form
-     */
-    public Form getForm() {
-        return form;
+    public Detail(Form form, Ingrediant ingredient,int quantity) {
+        this.formId=form.getId();
+        this.ingredient = ingredient;
+        this.isObligatory = true;
+        this.max = quantity;
+        this.min = quantity;
     }
 
-    /**
-     * @param form the form to set
-     */
-    public void setForm(Form form) {
-        this.form = form;
-    }
 
     /**
      * @return the ingredient
      */
-    public Ingredient getIngredient() {
+    public Ingrediant getIngredient() {
         return ingredient;
     }
 
     /**
      * @param ingredient the ingredient to set
      */
-    public void setIngredient(Ingredient ingredient) {
+    public void setIngredient(Ingrediant ingredient) {
         this.ingredient = ingredient;
     }
 
@@ -113,4 +116,11 @@ public class Detail {
         this.min = min;
     }
 
+    public int getFormId() {
+        return formId;
+    }
+
+    public void setFormId(int formId) {
+        this.formId = formId;
+    }
 }

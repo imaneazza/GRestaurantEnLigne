@@ -7,13 +7,13 @@ package  DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import  Classes.Role;
 import  Classes.User;
+import DAO.DAORole;
 import  DBLinking.DAO;
-
 /**
  *
  * @author mk
@@ -29,15 +29,30 @@ public class DAOUser extends DAO implements IDAOUser{
         public DAOUser() {
         super();
     }
+
     @Override
-    public int create(User o) {
-        statement = createStatement("INSERT INTO user(fName,lName,login,password,roleId) Values(?,?,?,?,?);");
+    public ArrayList<User> executeToArray() {
+        try {
+            ResultSet rs = statement.executeQuery();
+            ArrayList<User> list = new ArrayList<User>();
+            while (rs.next())  list.add(ResultSetToObject(rs));
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public int executeQuery(String query, User o) {
+        statement = createStatement(query);
         try {
             statement.setString(1, o.getfName());
             statement.setString(2, o.getlName());
             statement.setString(3, o.getLogin());
             statement.setString(4, o.getPassword());
-            statement.setInt(5, o.getRole().getId());
+            statement.setInt(5, o.getRoleId());
+            statement.setInt(6, o.getId());
             return statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,20 +61,13 @@ public class DAOUser extends DAO implements IDAOUser{
     }
 
     @Override
+    public int create(User o) {
+        return executeQuery("INSERT INTO user(fName,lName,login,password,roleId,id) Values(?,?,?,?,?,?);",o);
+    }
+
+    @Override
     public int update(User o) {
-         statement = createStatement("UPDATE user SET fName=?,lName=?,login=?,password=?,roleId=? WHERE id=?;");
-        try {
-            statement.setString(1, o.getfName());
-            statement.setString(2, o.getlName());
-            statement.setString(3, o.getLogin());
-            statement.setString(4, o.getPassword());
-            statement.setInt(5, o.getRole().getId());
-            statement.setInt(6, o.getId());
-            return statement.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        return executeQuery("UPDATE user SET fName=?,lName=?,login=?,password=?,roleId=? WHERE id=?;",o);
     }
 
     @Override
@@ -90,28 +98,15 @@ public class DAOUser extends DAO implements IDAOUser{
     }
 
     @Override
-    public HashMap<Integer, User> getAll() {
-        HashMap<Integer, User> list = new HashMap<Integer, User>();
-        try {
+    public ArrayList<User> getAll() {
             statement = createStatement("SELECT * FROM user;");
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                User o = ResultSetToObject(rs);
-                o.setRole(daoRole.find(rs.getInt(roleId)));
-                list.put(o.getId(), o);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
+            return executeToArray();
     }
 
     @Override
     public User ResultSetToObject(ResultSet rs) {
         try {
-            User o = new User(rs.getInt(id), rs.getString(fName), rs.getString(lName), rs.getString(login), rs.getString(password));
-            o.setRole(daoRole.find(rs.getInt(roleId)));
-            return o;
+            return new User(rs.getInt(id), rs.getString(fName), rs.getString(lName), rs.getString(login), rs.getString(password),rs.getInt(roleId));
         } catch (SQLException ex) {
             Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -135,21 +130,14 @@ public class DAOUser extends DAO implements IDAOUser{
     }
 
     @Override
-    public HashMap<Integer, User> findByRole(Role role) {
-        HashMap<Integer, User> list = new HashMap<Integer, User>();
+    public ArrayList<User> findByRole(Role role) {
         try {
+            statement.setInt(1,role.getId());
             statement = createStatement("SELECT * FROM user WHERE roleId=?;");
-            statement.setInt(1, role.getId());
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                User o = ResultSetToObject(rs);
-                o.setRole(role);
-                list.put(o.getId(), o);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return list;
+        return executeToArray();
     }
 
     

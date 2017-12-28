@@ -5,16 +5,16 @@
  */
 package  Metier;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import  Classes.Detail;
 import  Classes.Form;
-import  Classes.Ingredient;
+import  Classes.Ingrediant;
 
 /**
  *
  * @author inknown
  */
 public interface IMetierDetail extends IMetier<Detail> {
-    public HashMap<Integer,Detail> findByForm(Form form);
-    public HashMap<Integer,Detail> findByIngredient(Ingredient ingredient);
+    public ArrayList<Detail> findByForm(Form form);
+    public ArrayList<Detail> findByIngredient(Ingrediant ingredient);
 }

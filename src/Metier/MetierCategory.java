@@ -5,9 +5,11 @@
  */
 package  Metier;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import  Classes.Category;
+import Classes.Ingrediant;
 import  DAO.DAOCategory;
+import DAO.DAOIngredient;
 
 /**
  *
@@ -36,8 +38,10 @@ public class MetierCategory implements IMetierCategory{
     }
 
     @Override
-    public HashMap<Integer, Category> getAll() {
+    public ArrayList<Category> getAll() {
         return dao.getAll();
     }
+    @Override
+    public ArrayList<Ingrediant> getIngrediants(Category category){return dao.getIngredients(category); }
     
 }

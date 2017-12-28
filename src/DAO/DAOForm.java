@@ -7,12 +7,14 @@ package  DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import Classes.Detail;
 import  Classes.Form;
-import  Classes.Offre;
+import  Classes.Offer;
 import  DBLinking.DAO;
 
 /**
@@ -23,37 +25,34 @@ public class DAOForm extends DAO implements IDAOForm{
 
     private String id = "id";
     private String name = "name";
-    private String idOffre = "idOffre";
-    private DAOOffre daoOffer = new DAOOffre();
+    private String idOffer = "idOffer";
+    private DAOOffer daoOffer = new DAOOffer();
     private DAODetail daoDetails=new DAODetail();
 
     public DAOForm() {
         super();
     }
     @Override
-    public int create(Form o) {
-        statement = createStatement("INSERT INTO form(nom) Values(?);");
+    public int executeQuery(String query,Form o){
+        statement = createStatement(query);
         try {
-            statement.setString(1, o.getName());
+            statement.setString(2, o.getName());
+            statement.setInt(1, o.getId());
             return statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
+    @Override
+    public int create(Form o) {
+        return executeQuery("INSERT INTO form(nom,id) Values(?,?);",o);
+
+    }
 
     @Override
     public int update(Form o) {
-        statement = createStatement("UPDATE form SET nom=?,offreId=? WHERE id=?;");
-        try {
-            statement.setString(1, o.getName());
-            statement.setInt(2, o.getOffre().getId());
-            statement.setInt(5, o.getId());
-            return statement.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        return executeQuery("UPDATE form SET nom=?,OfferId=? WHERE id=?;",o);
 
     }
 
@@ -77,8 +76,7 @@ public class DAOForm extends DAO implements IDAOForm{
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
                 Form o = ResultSetToObject(rs);
-                o.setOffre(daoOffer.find(rs.getInt(idOffre)));
-                o.setDetails(daoDetails.findByForm(o));
+                o.setDetails(getDetails(o));
                 return o;
             }
         } catch (SQLException ex) {
@@ -88,27 +86,16 @@ public class DAOForm extends DAO implements IDAOForm{
     }
 
     @Override
-    public HashMap<Integer, Form> getAll() {
-        HashMap<Integer, Form> list = new HashMap<Integer, Form>();
-        try {
+    public ArrayList<Form> getAll() {
+        ArrayList<Form> list = new ArrayList<Form>();
             statement = createStatement("SELECT * FROM form");
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Form o = ResultSetToObject(rs);
-                o.setOffre(daoOffer.find(rs.getInt(idOffre)));
-                o.setDetails(daoDetails.findByForm(o));
-                list.put(o.getId(), o);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
+            return executeToArray();
     }
 
     @Override
     public Form ResultSetToObject(ResultSet rs) {
         try {
-            Form o = new Form(rs.getInt(id), rs.getString(name));
+            Form o = new Form(rs.getInt(id), rs.getString(name),rs.getInt(idOffer));
             return o;
         } catch (SQLException ex) {
             Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,28 +106,36 @@ public class DAOForm extends DAO implements IDAOForm{
     /**
      *
      * @param
-     * @return
+     * @return ArrayList<Form>
      */
     @Override
-    public HashMap<Integer, Form> findByOffre(Offre offre) {
-        HashMap<Integer, Form> list = new HashMap<Integer, Form>();
+    public ArrayList<Form> findByOffer(Offer Offer) {
         try {
-            statement = createStatement("SELECT * FROM form WHERE offreId=?;");
-            statement.setInt(1,offre.getId());
+            statement = createStatement("SELECT * FROM form WHERE OfferId=?;");
+            statement.setInt(1,Offer.getId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return executeToArray();
+    }
+    public ArrayList<Form> executeToArray(){
+        try {
+            ArrayList<Form> list=list = new ArrayList<Form>();
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 Form o = ResultSetToObject(rs);
-                o.setOffre(offre);
-                o.setDetails(daoDetails.findByForm(o));
-                list.put(o.getId(), o);
+                o.setDetails(getDetails(o));
+                list.add(o.getId(), o);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return list;
+        return null;
     }
+    @Override
+    public ArrayList<Detail> getDetails(Form o) {
 
-
-
-    
+        return daoDetails.findByForm(o);
+    }
 }

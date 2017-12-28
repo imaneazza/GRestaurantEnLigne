@@ -7,11 +7,11 @@ package  DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import  Classes.Category;
-import  Classes.Ingredient;
+import  Classes.Ingrediant;
 import  Classes.Price;
 import  Classes.UniteMesure;
 import  DBLinking.DAO;
@@ -28,24 +28,22 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     private String stock = "stock";
     private String categoryId = "categoryId";
     private DAOCategory daoCategory = new DAOCategory();
+    private DAOPrice daoPrice=new DAOPrice();
 
     public DAOIngredient() {
         super();
     }
 
-    
     @Override
-    public HashMap<Integer, Ingredient> findByCategory(Category category) {
-        HashMap<Integer, Ingredient> list=new HashMap<Integer, Ingredient>();
+    public ArrayList<Ingrediant> executeToArray() {
         try {
-            statement = createStatement("SELECT * FROM ingredient WHERE categoryId=?;");
-            statement.setInt(1, category.getId());
             ResultSet rs = statement.executeQuery();
+            ArrayList<Ingrediant> list=new ArrayList<Ingrediant>();
             if (rs.next()) {
-                Ingredient ingredient =ResultSetToObject(rs);
-                ingredient.setCategory(category);
-                list.put(ingredient.getId(), ingredient);
+                Ingrediant ingredient =ResultSetToObject(rs);
+                list.add(ingredient);
             }
+            return list;
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,13 +51,14 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     }
 
     @Override
-    public int create(Ingredient o) {
-        statement = createStatement("INSERT INTO ingredient(nom,uniteMesure,stock,categoryId) Values(?,?,?,?);");
+    public int executeQuery(String query, Ingrediant o) {
+        statement = createStatement(query);
         try {
             statement.setString(1, o.getName());
             statement.setString(2, o.getUnitMesure().toString());
             statement.setInt(3, o.getStock());
-            statement.setInt(4, o.getCategory().getId());
+            statement.setInt(4, o.getCategoryId());
+            statement.setInt(5, o.getId());
             return statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,19 +67,25 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     }
 
     @Override
-    public int update(Ingredient o) {
-        statement = createStatement("UPDATE ingredient SET nom=?,uniteMesure=?,stock=?,categoryId=? WHERE id=?;");
+    public ArrayList<Ingrediant> findByCategory(Category category) {
         try {
-            statement.setString(1, o.getName());
-            statement.setString(2, o.getUnitMesure().toString());
-            statement.setInt(3, o.getStock());
-            statement.setInt(4, o.getCategory().getId());
-            statement.setInt(5, o.getId());
-            return statement.executeUpdate();
+            statement = createStatement("SELECT * FROM ingredient WHERE categoryId=?;");
+            statement.setInt(1, category.getId());
+
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
+        return executeToArray();
+    }
+
+    @Override
+    public int create(Ingrediant o) {
+       return executeQuery("INSERT INTO ingredient(nom,uniteMesure,stock,categoryId,id) Values(?,?,?,?,?);",o);
+    }
+
+    @Override
+    public int update(Ingrediant o) {
+        return executeQuery("UPDATE ingredient SET nom=?,uniteMesure=?,stock=?,categoryId=? WHERE id=?;",o);
 
     }
 
@@ -97,15 +102,13 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     }
 
     @Override
-    public Ingredient find(int id) {
+    public Ingrediant find(int id) {
         try {
             statement = createStatement("SELECT * FROM ingredient WHERE id=?;");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Ingredient i = ResultSetToObject(rs);
-                i.setCategory(daoCategory.find(rs.getInt("categoryId")));
-                return i;
+                return ResultSetToObject(rs);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
@@ -114,30 +117,22 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     }
 
     @Override
-    public HashMap<Integer, Ingredient> getAll() {
-        HashMap<Integer, Ingredient> list = new HashMap<Integer, Ingredient>();
-        try {
+    public ArrayList<Ingrediant> getAll() {
             statement = createStatement("SELECT * FROM ingredient");
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Ingredient ingredient = ResultSetToObject(rs);
-
-                ingredient.setCategory(daoCategory.find(rs.getInt("categoryId")));
-                list.put(ingredient.getId(), ingredient);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
+            return executeToArray();
     }
 
     @Override
-    public Ingredient ResultSetToObject(ResultSet rs) {
+    public Ingrediant ResultSetToObject(ResultSet rs) {
         try {
-            Ingredient ingredient = new Ingredient(rs.getInt(id), rs.getString(name), StringToUniteMesure(rs.getString(uniteMesure)), rs.getInt("stock"));
-
-             DAOPrice daoPrice = new DAOPrice();
-            ingredient.setArchivePrice(daoPrice.findByIngredient(ingredient));
+            Ingrediant ingredient = new Ingrediant(
+                    rs.getInt(id),
+                    rs.getString(name),
+                    StringToUniteMesure(rs.getString(uniteMesure)),
+                    rs.getInt(stock),
+                    rs.getInt(categoryId)
+            );
+            ingredient.setArchivePrice(getPrices(ingredient));
             daoPrice.getManager().close();
             return ingredient;
         } catch (SQLException ex) {
@@ -169,7 +164,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
 
 
     @Override
-    public int addQuantity(Ingredient ingredient,int quantity) {
+    public int addStock(Ingrediant ingredient,int quantity) {
         statement = createStatement("UPDATE ingredient SET stock=stock+? id=?;");
         try {
             statement.setInt(1, quantity);
@@ -181,4 +176,11 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         return 0;
     }
 
+    @Override
+    public int consume(Ingrediant ingredient, int quantity) {
+        return addStock(ingredient,-quantity);
+    }
+    public ArrayList<Price> getPrices(Ingrediant ingrediant){
+        return daoPrice.findByIngrediant(ingrediant);
+    }
 }

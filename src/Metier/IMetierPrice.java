@@ -5,8 +5,8 @@
  */
 package  Metier;
 
-import java.util.HashMap;
-import  Classes.Ingredient;
+import java.util.ArrayList;
+import  Classes.Ingrediant;
 import  Classes.Price;
 
 /**
@@ -14,5 +14,5 @@ import  Classes.Price;
  * @author inknown
  */
 public interface IMetierPrice extends IMetier<Price> {
-    public HashMap<Integer,Price> findByIngredient(Ingredient ingredient);
+    public ArrayList<Price> findByIngredient(Ingrediant ingredient);
 }

@@ -6,8 +6,6 @@
 package Classes;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
 /**
  *
@@ -17,33 +15,35 @@ public class Form {
 
     private int id;
     private String name;
-    private Offre offre = null;
-    private HashMap<Integer,Detail> details = new HashMap<Integer,Detail>();
+    private int OfferId;
+    private ArrayList<Detail> details;
 
     public Form() {
         this.id = -1;
         name = "";
-        offre = new Offre();
+        details = new ArrayList<Detail>();
     }
 
-    public Form(int id, String name, Offre offre,HashMap<Integer,Detail> details) {
+    public Form(int id, String name, int OfferId, ArrayList<Detail> details) {
         this.id = id;
         this.name = name;
-        this.offre = offre;
-        this.details.putAll(details);
+        this.details = details;
+        this.setOfferId(OfferId);
     }
 
-    public Form(int id, String name) {
+    public Form(int id, String name, int OfferId) {
         this.id = id;
         this.name = name;
+        this.setOfferId(OfferId);
+        this.details=new ArrayList<Detail>();
     }
 
     public void addDetail(Detail detail) {
-        this.details.put(details.size(),detail);
+        this.details.add( detail);
     }
 
-    public boolean isAvailable() {
-        for (Detail detail : getDetails().values()) {
+    public boolean isAvailable(ArrayList<Category> categories) {
+        for (Detail detail : getDetails()) {
             if (detail.getMax() < detail.getIngredient().getStock()) {
                 return false;
             }
@@ -52,7 +52,7 @@ public class Form {
     }
 
     public void removeDetail(Detail detail) {
-        this.getDetails().remove(detail);
+        this.details.remove(detail);
     }
 
     /**
@@ -84,31 +84,24 @@ public class Form {
     }
 
     /**
-     * @return the offre
-     */
-    public Offre getOffre() {
-        return offre;
-    }
-
-    /**
-     * @param offre the offre to set
-     */
-    public void setOffre(Offre offre) {
-        this.offre = offre;
-    }
-
-    /**
      * @return the details
      */
-    public HashMap<Integer,Detail> getDetails() {
+    public ArrayList< Detail> getDetails() {
         return details;
     }
 
     /**
      * @param details the details to set
      */
-    public void setDetails(HashMap<Integer,Detail> details) {
+    public void setDetails(ArrayList<Detail> details) {
         this.details = details;
     }
 
+    public int getOfferId() {
+        return OfferId;
+    }
+
+    public void setOfferId(int OfferId) {
+        this.OfferId = OfferId;
+    }
 }

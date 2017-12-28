@@ -5,14 +5,16 @@
  */
 package  Metier;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import  Classes.Offer;
 import  Classes.Form;
-import  Classes.Offre;
+import  Classes.Detail;
 
 /**
  *
  * @author inknown
  */
 public interface IMetierForm extends IMetier<Form> {
-    public HashMap<Integer,Form> findByOffre(Offre offre);
+    public ArrayList<Detail> getDetails(Form form);
+    public ArrayList<Form> findByOffer(Offer Offer);
 }

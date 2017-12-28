@@ -5,10 +5,12 @@
  */
 package  Metier;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import  Classes.Price;
 import  Classes.Category;
-import  Classes.Ingredient;
+import  Classes.Ingrediant;
 import  DAO.DAOIngredient;
+import  DAO.DAOPrice;
 
 /**
  *
@@ -16,23 +18,24 @@ import  DAO.DAOIngredient;
  */
 public class MetierIngredient implements IMetierIngredient{
     DAOIngredient dao=new DAOIngredient();
+    DAOPrice daoPrice=new DAOPrice();
     @Override
-    public HashMap<Integer, Ingredient> findByCategory(Category category) {
+    public ArrayList<Ingrediant> findByCategory(Category category) {
         return dao.findByCategory(category);
     }
 
     @Override
-    public Ingredient find(int id) {
+    public Ingrediant find(int id) {
         return dao.find(id);
     }
 
     @Override
-    public int create(Ingredient object) {
+    public int create(Ingrediant object) {
         return dao.create(object);
     }
 
     @Override
-    public int update(Ingredient object) {
+    public int update(Ingrediant object) {
         return dao.update(object);
     }
 
@@ -42,8 +45,12 @@ public class MetierIngredient implements IMetierIngredient{
     }
 
     @Override
-    public HashMap<Integer, Ingredient> getAll() {
+    public ArrayList<Ingrediant> getAll() {
         return dao.getAll();
+    }
+    @Override
+    public ArrayList<Price> getPrices(Ingrediant ingediant) {
+        return daoPrice.findByIngrediant(ingediant);
     }
     
 }

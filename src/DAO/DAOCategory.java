@@ -7,11 +7,11 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Classes.Category;
-import Classes.Ingredient;
+import Classes.Ingrediant;
 import DBLinking.DAO;
 
 /**
@@ -23,12 +23,45 @@ public class DAOCategory extends DAO implements IDAOCategory {
     private String id = "id";
     private String name = "name";
     private String imageSource = "imageSource";
+    private DAOIngredient daoIngredient=new DAOIngredient();
+
 
     @Override
-    public HashMap<Integer, Ingredient> getIngredients(Category category) {
+    public int executeQuery(String query, Category o) {
+        statement = createStatement(query);
+        try {
+            statement.setString(1, o.getName());
+            statement.setString(2, o.getImageSource());
+            statement.setInt(3, o.getId());
+            return statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public ArrayList<Category> executeToArray() {
+        try {
+            ResultSet rs = statement.executeQuery();
+            ArrayList<Category> list = new ArrayList<Category>();
+            while (rs.next()) {
+                Category category = ResultSetToObject(rs);
+                list.add(category);
+            }
+            return list;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Ingrediant> getIngredients(Category category) {
 
          DAOIngredient daoIngredients = new DAOIngredient();
-        HashMap<Integer, Ingredient> liste=daoIngredients.findByCategory(category);
+        ArrayList<Ingrediant> liste=daoIngredients.findByCategory(category);
         daoIngredients.getManager().close();
         return liste;
     }
@@ -39,29 +72,12 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public int create(Category o) {
-        statement = createStatement("INSERT INTO category(nom,imageSource) Values(?,?);");
-        try {
-            statement.setString(1, o.getName());
-            statement.setString(2, o.getImageSource());
-            return statement.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        return  executeQuery("INSERT INTO category(nom,imageSource,id) Values(?,?,?);",o);
     }
 
     @Override
     public int update(Category o) {
-        statement = createStatement("UPDATE category SET nom=?,imageSource=? WHERE id=?;");
-        try {
-            statement.setString(1, o.getName());
-            statement.setString(2, o.getImageSource());
-            statement.setInt(3, o.getId());
-            return statement.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        return  executeQuery("UPDATE category SET nom=?,imageSource=? WHERE id=?;",o);
     }
 
     @Override
@@ -92,29 +108,16 @@ public class DAOCategory extends DAO implements IDAOCategory {
     }
 
     @Override
-    public HashMap<Integer, Category> getAll() {
-        HashMap<Integer, Category> list = new HashMap<Integer, Category>();
-        try {
+    public ArrayList<Category> getAll() {
             statement = createStatement("SELECT * FROM category ");
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Category category = ResultSetToObject(rs);
-                list.put(category.getId(), category);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
+            return executeToArray();
     }
 
     @Override
     public Category ResultSetToObject(ResultSet rs) {
         try {
             Category category = new Category(rs.getInt(id), rs.getString(name), rs.getString(imageSource));
-
-            DAOIngredient daoIngredients=new DAOIngredient();
-            category.setIngredients(daoIngredients.findByCategory(category));
-            daoIngredients.getManager().close();
+            category.setIngrediants(daoIngredient.findByCategory(category));
             return category;
         } catch (SQLException ex) {
             Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);

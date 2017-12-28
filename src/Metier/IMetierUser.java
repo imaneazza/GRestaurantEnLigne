@@ -5,7 +5,7 @@
  */
 package  Metier;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import  Classes.Role;
 import  Classes.User;
 
@@ -15,5 +15,5 @@ import  Classes.User;
  */
 public interface IMetierUser extends IMetier<User> {
     public User connect(String login,String password);
-    public HashMap<Integer,User> findByRole(Role role);
+    public ArrayList<User> findByRole(Role role);
 }

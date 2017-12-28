@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package  DAO;
+package DAO;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import  Classes.Category;
-import  Classes.Ingredient;
+import  Classes.Ingrediant;
 
 
 /**
@@ -15,5 +15,5 @@ import  Classes.Ingredient;
  * @author inknown
  */
 public interface IDAOCategory extends IDAO<Category>{
-    public HashMap<Integer,Ingredient> getIngredients(Category category);
+    public ArrayList<Ingrediant> getIngredients(Category category);
 }

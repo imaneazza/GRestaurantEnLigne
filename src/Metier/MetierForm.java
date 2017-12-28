@@ -5,9 +5,11 @@
  */
 package  Metier;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+
+import Classes.Detail;
 import  Classes.Form;
-import  Classes.Offre;
+import  Classes.Offer;
 import  DAO.DAOForm;
 
 /**
@@ -18,8 +20,8 @@ public class MetierForm implements IMetierForm{
     DAOForm dao=new DAOForm();
 
     @Override
-    public HashMap<Integer, Form> findByOffre(Offre offre) {
-        return dao.findByOffre(offre);
+    public ArrayList<Form> findByOffer(Offer Offer) {
+        return dao.findByOffer(Offer);
     }
 
     @Override
@@ -43,8 +45,12 @@ public class MetierForm implements IMetierForm{
     }
 
     @Override
-    public HashMap<Integer, Form> getAll() {
+    public ArrayList<Form> getAll() {
         return dao.getAll();
     }
-    
+
+    @Override
+    public ArrayList<Detail> getDetails(Form form) {
+        return dao.getDetails(form);
+    }
 }

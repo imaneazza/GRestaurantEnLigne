@@ -5,7 +5,7 @@
  */
 package  Metier;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import  Classes.Role;
 import  DAO.DAORole;
 
@@ -36,7 +36,7 @@ public class MetierRole implements IMetierRole{
     }
 
     @Override
-    public HashMap<Integer, Role> getAll() {
+    public ArrayList<Role> getAll() {
         return dao.getAll();
     }
     

@@ -15,22 +15,14 @@ public class User {
     private String lName;
     private String login;
     private String password;
-    private Role role;
-
-    public User(int id, String fName, String lName, String login, String password, Role role) {
+    private int roleId;
+    public User(int id, String fName, String lName, String login, String password,int roleId) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.login = login;
         this.password = password;
-        this.role = role;
-    }
-    public User(int id, String fName, String lName, String login, String password) {
-        this.id = id;
-        this.fName = fName;
-        this.lName = lName;
-        this.login = login;
-        this.password = password;
+        this.roleId=roleId;
     }
     
 
@@ -107,18 +99,12 @@ public class User {
         this.password = password;
     }
 
-    /**
-     * @return the role
-     */
-    public Role getRole() {
-        return role;
+
+    public int getRoleId() {
+        return roleId;
     }
 
-    /**
-     * @param role the role to set
-     */
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
-    
 }

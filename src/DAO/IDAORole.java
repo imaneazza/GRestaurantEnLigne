@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package DAO;
-import Classes.Role;
 
-
+import java.util.ArrayList;
+import  Classes.Role;
+import Classes.User;
 
 /**
  *
  * @author inknown
  */
 public interface IDAORole extends IDAO<Role>{
+    public ArrayList<User> getUsers(Role role);
 }

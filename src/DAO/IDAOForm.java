@@ -3,16 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package  DAO;
 
-import java.util.HashMap;
+package DAO;
+
+import java.util.ArrayList;
+import  Classes.Detail;
 import  Classes.Form;
-import  Classes.Offre;
+import  Classes.Offer;
 
 /**
  *
  * @author inknown
  */
 public interface IDAOForm extends IDAO<Form> {
-    public HashMap<Integer, Form> findByOffre(Offre o);
+    public ArrayList<Detail> getDetails(Form o);
+    public ArrayList<Form> findByOffer(Offer o);
+
 }

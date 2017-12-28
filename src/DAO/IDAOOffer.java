@@ -5,17 +5,15 @@
  */
 package DAO;
 
+import Classes.Form;
+import  Classes.Offer;
+
 import java.util.ArrayList;
-import  Classes.Role;
-import  Classes.User;
-
-
 
 /**
  *
  * @author inknown
  */
-public interface IDAOUser extends IDAO<User>{
-    public User connect(String login,String password);
-    public ArrayList<User> findByRole(Role role);
+public interface IDAOOffer extends IDAO<Offer>{
+    public ArrayList<Form> getForms(Offer o);
 }

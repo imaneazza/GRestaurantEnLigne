@@ -6,7 +6,7 @@
 package  DAO;
 
 import java.sql.ResultSet;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +17,8 @@ public interface IDAO<T> {
     public int update(T object);
     public int delete(int id);
     public T find(int id);
-    public HashMap<Integer,T> getAll();
+    public ArrayList<T> getAll();
     public T ResultSetToObject(ResultSet rs);
+    public int executeQuery(String query,T o);
+    public ArrayList<T> executeToArray();
 }

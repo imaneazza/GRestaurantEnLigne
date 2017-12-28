@@ -6,10 +6,14 @@
 package  Metier;
 
 import  Classes.Category;
+import Classes.Ingrediant;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author inknown
  */
 public interface IMetierCategory extends IMetier<Category>{
+    public ArrayList<Ingrediant> getIngrediants(Category category);
 }

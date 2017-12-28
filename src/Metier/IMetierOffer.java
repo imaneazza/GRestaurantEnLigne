@@ -5,16 +5,15 @@
  */
 package  Metier;
 
+import  Classes.Offer;
+import Classes.Form;
+
 import java.util.ArrayList;
 
 /**
  *
  * @author inknown
  */
-public interface IMetier<T> {
-    public T find(int id);
-    public int create(T object);
-    public int update(T object);
-    public int delete(int id);
-    public ArrayList<T> getAll();
+public interface IMetierOffer extends IMetier<Offer> {
+    public ArrayList<Form> getForms(Offer offer);
 }

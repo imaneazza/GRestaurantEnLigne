@@ -6,40 +6,30 @@
 package  Metier;
 
 import java.util.ArrayList;
-import  Classes.Detail;
-import  Classes.Form;
+import  Classes.Price;
 import  Classes.Ingrediant;
-import  DAO.DAODetail;
+import  DAO.DAOIngredient;
+import  DAO.DAOPrice;
 
 /**
  *
  * @author inknown
  */
-public class MetierDetail implements IMetierDetail{
-    private DAODetail dao=new DAODetail();
+public class MetierPrice implements IMetierPrice{
+    DAOPrice dao=new DAOPrice();
 
     @Override
-    public ArrayList<Detail> findByForm(Form form) {
-        return dao.findByForm(form);
-    }
-
-    @Override
-    public ArrayList<Detail> findByIngredient(Ingrediant ingredient) {
-        return dao.findByIngrediant(ingredient);
-    }
-
-    @Override
-    public Detail find(int id) {
+    public Price find(int id) {
         return dao.find(id);
     }
 
     @Override
-    public int create(Detail object) {
+    public int create(Price object) {
         return dao.create(object);
     }
 
     @Override
-    public int update(Detail object) {
+    public int update(Price object) {
         return dao.update(object);
     }
 
@@ -49,8 +39,11 @@ public class MetierDetail implements IMetierDetail{
     }
 
     @Override
-    public ArrayList<Detail> getAll() {
+    public ArrayList<Price> getAll() {
         return dao.getAll();
+    }
+    public ArrayList<Price> findByIngredient(Ingrediant ingredient){
+        return dao.findByIngrediant(ingredient);
     }
 
 
