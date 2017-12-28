@@ -2,112 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Category.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Detail.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Form.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Ingredient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Offre.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Price.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Role.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/UniteMesure.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/User.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/AddIngredientController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatInfoController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatgererController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/HomeController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/LoginController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/addcatController$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/addcatController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/listeoffres.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/maintest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/updateCatController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOCategory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAODetail.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOForm.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOIngredient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOOffre.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOPrice.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAORole.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOUser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOCategory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAODetail.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOForm.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOIngredient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOOffre.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOPrice.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAORole.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOUser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DBLinking/BDDManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DBLinking/DAO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Main.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierCategory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierDetail.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierForm.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierIngredient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierOffre.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierPrice.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierRole.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierUser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierCategory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierDetail.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierForm.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierIngredient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierRole.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierUser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/beans/DetailOffre.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/beans/ingredients.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/offres/offre1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offres/offre1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/pictures/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/description.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GRestaurantEnLigne.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Addingredient.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Catgerer.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Catinfo.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/HomePage.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/LoginPage.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Offre.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Style/Style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Addingredient.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Catgerer.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Catinfo.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/HomePage.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/LoginPage.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Offre.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/addcat.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/listeoffres.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/offreinfo.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/updateCat.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/addcat.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/listeoffres.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offreinfo.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/updateCat.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -200,6 +96,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -263,6 +162,12 @@
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -292,17 +197,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="GRestaurantEnLigne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRestaurantEnLigne" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -319,8 +215,22 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="GRestaurantEnLigne" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRestaurantEnLigne" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRestaurantEnLigne" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRestaurantEnLigne" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,6 +249,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -561,6 +472,7 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
+      <workItem from="1514492058869" duration="553000" />
     </task>
     <task id="LOCAL-00001" summary="GRestaurant Project">
       <created>1514316723968</created>
@@ -573,25 +485,25 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1302000" />
+    <option name="totallyTimeSpent" value="1855000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1920" height="1053" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3771791" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3771791" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25036603" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25320512" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -604,8 +516,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3771791" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -646,8 +558,21 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -669,13 +594,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/offreinfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="134" column="3" lean-forward="false" selection-start-line="134" selection-start-column="3" selection-end-line="134" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Classes/Category.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -935,20 +853,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="747" column="0" lean-forward="false" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Thread.java" />
     <entry file="file://$PROJECT_DIR$/src/DBLinking/BDDManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
@@ -1009,9 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1019,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,6 +929,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1802">
           <caret line="120" column="13" lean-forward="true" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
