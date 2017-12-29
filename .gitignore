@@ -1,4 +1,4 @@
-/out
-/out/*
-/src/DBLinking
-/GRestaurantEnLigne.iml
+# exclude everything except directory foo/bar
+    /*
+    !/src
+    !/.gitignore
