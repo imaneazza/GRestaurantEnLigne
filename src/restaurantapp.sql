@@ -1,9 +1,13 @@
+DROP DATABASE restaurantapp;
+CREATE DATABASE restaurantapp;
+USE restaurantapp;
+
 -- phpMyAdmin SQL Dump
 -- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 19, 2017 at 11:22 PM
+-- Generation Time: Dec 29, 2017 at 03:56 AM
 -- Server version: 10.1.23-MariaDB-9+deb9u1
 -- PHP Version: 7.0.19-1
 
@@ -27,7 +31,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
   `imageSource` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -39,8 +43,8 @@ CREATE TABLE `category` (
 --
 
 CREATE TABLE `detail` (
-  `idForm` bigint(20) NOT NULL,
-  `idingredient` bigint(20) NOT NULL,
+  `idForm` int(11) NOT NULL,
+  `idingredient` int(11) NOT NULL,
   `obligatory` tinyint(1) NOT NULL,
   `qteMax` decimal(10,0) DEFAULT '0',
   `qteMix` decimal(10,0) DEFAULT '0'
@@ -53,9 +57,9 @@ CREATE TABLE `detail` (
 --
 
 CREATE TABLE `form` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
-  `OfferId` bigint(20) DEFAULT NULL
+  `OfferId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -65,11 +69,11 @@ CREATE TABLE `form` (
 --
 
 CREATE TABLE `ingredient` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
   `uniteMesure` varchar(10) NOT NULL,
   `qte` decimal(10,0) NOT NULL,
-  `categoryId` bigint(20) DEFAULT NULL
+  `categoryId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -79,10 +83,10 @@ CREATE TABLE `ingredient` (
 --
 
 CREATE TABLE `Offer` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
   `imageSource` varchar(40) NOT NULL,
-  `state` tinyint(1) NOT NULL
+  `state` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -92,10 +96,10 @@ CREATE TABLE `Offer` (
 --
 
 CREATE TABLE `price` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `price` decimal(10,0) NOT NULL,
-  `ingredientId` bigint(20) DEFAULT NULL
+  `ingredientId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -105,9 +109,18 @@ CREATE TABLE `price` (
 --
 
 CREATE TABLE `role` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'web master'),
+(2, 'chef cuisine'),
+(3, 'chef stock');
 
 -- --------------------------------------------------------
 
@@ -116,12 +129,12 @@ CREATE TABLE `role` (
 --
 
 CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `lName` varchar(40) NOT NULL,
   `fName` varchar(40) NOT NULL,
   `login` varchar(40) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `roleId` bigint(20) DEFAULT NULL
+  `roleId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -132,39 +145,41 @@ CREATE TABLE `user` (
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `imageSource` (`imageSource`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `detail`
 --
 ALTER TABLE `detail`
-  ADD PRIMARY KEY (`idForm`,`idingredient`);
+  ADD PRIMARY KEY (`idForm`,`idingredient`),
+  ADD KEY `fk_detail_ingrediant_idx` (`idingredient`);
 
 --
 -- Indexes for table `form`
 --
 ALTER TABLE `form`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_form_offer_idx` (`OfferId`);
 
 --
 -- Indexes for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_ingredient_1_idx` (`categoryId`);
 
 --
 -- Indexes for table `Offer`
 --
 ALTER TABLE `Offer`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `imageSource` (`imageSource`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `price`
 --
 ALTER TABLE `price`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_price_ingrediant_idx` (`ingredientId`);
 
 --
 -- Indexes for table `role`
@@ -177,47 +192,45 @@ ALTER TABLE `role`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `login` (`login`);
+  ADD KEY `fk_user_role_idx` (`roleId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- Constraints for table `detail`
 --
-ALTER TABLE `category`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `detail`
+  ADD CONSTRAINT `fk_detail_form` FOREIGN KEY (`idForm`) REFERENCES `form` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_detail_ingrediant` FOREIGN KEY (`idingredient`) REFERENCES `ingredient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 --
--- AUTO_INCREMENT for table `form`
+-- Constraints for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  ADD CONSTRAINT `fk_form_offer` FOREIGN KEY (`OfferId`) REFERENCES `Offer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 --
--- AUTO_INCREMENT for table `ingredient`
+-- Constraints for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  ADD CONSTRAINT `fk_ingredient_1` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 --
--- AUTO_INCREMENT for table `Offer`
---
-ALTER TABLE `Offer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `price`
+-- Constraints for table `price`
 --
 ALTER TABLE `price`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  ADD CONSTRAINT `fk_price_ingrediant` FOREIGN KEY (`ingredientId`) REFERENCES `ingredient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 --
--- AUTO_INCREMENT for table `role`
---
-ALTER TABLE `role`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  ADD CONSTRAINT `fk_user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO role(`id`,`name`) VALUES(1,'web master'),(2,'chef cuisine'),(3,'chef stock');
