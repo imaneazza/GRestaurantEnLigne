@@ -20,7 +20,7 @@ public class BDDManager {
        host="localhost:3306";
        DBName="restaurantapp";
        DBUser="root";
-       DBPassword="";
+       DBPassword="root";
        PrepareConnextion(driver,host,DBName,DBUser,DBPassword); 
     }
     
