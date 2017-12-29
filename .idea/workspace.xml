@@ -2,102 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Ingredient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Offre.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/maintest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOOffre.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOOffre.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierOffre.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Classes/Ingredient.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Classes/Offre.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Controller/maintest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Metier/IMetierOffre.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Category.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Category.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Detail.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Detail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Form.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Form.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Price.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Price.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Role.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Role.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/UniteMesure.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/UniteMesure.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/User.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/AddIngredientController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/AddIngredientController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatInfoController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatInfoController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatgererController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatgererController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/HomeController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/LoginController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController$1.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/addcatController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/addcatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/listeoffres.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/listeoffres.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo$1.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/updateCatController.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/updateCatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOCategory.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOCategory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAODetail.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAODetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOForm.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOIngredient.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOIngredient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOPrice.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOPrice.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAORole.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAORole.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOUser.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAO.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOCategory.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOCategory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAODetail.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAODetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOForm.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOIngredient.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOIngredient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOPrice.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOPrice.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAORole.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAORole.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOUser.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DBLinking/BDDManager.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DBLinking/BDDManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetier.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetier.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierCategory.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierCategory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierDetail.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierDetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierForm.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierIngredient.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierIngredient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierPrice.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierPrice.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierUser.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierCategory.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierCategory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierDetail.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierDetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierForm.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierIngredient.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierIngredient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierRole.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierRole.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierUser.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/beans/ingredients.class" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/beans/ingredients.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/offres/offre1.jpg" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/offres/offre1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offres/offre1.jpg" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offres/offre1.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/HomePage.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/HomePage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/LoginPage.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/LoginPage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Offre.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Offre.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Style/Style.css" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Style/Style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/HomePage.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/HomePage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/LoginPage.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/LoginPage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Offre.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Offre.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/offreinfo.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/offreinfo.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offreinfo.fxml" afterPath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offreinfo.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Classes/UniteMesure.java" afterPath="$PROJECT_DIR$/src/Classes/UniteMesure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/AddIngredientController.java" afterPath="$PROJECT_DIR$/src/Controller/AddIngredientController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CatInfoController.java" afterPath="$PROJECT_DIR$/src/Controller/CatInfoController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CatgererController.java" afterPath="$PROJECT_DIR$/src/Controller/CatgererController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/HomeController.java" afterPath="$PROJECT_DIR$/src/Controller/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/LoginController.java" afterPath="$PROJECT_DIR$/src/Controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/OffreController.java" afterPath="$PROJECT_DIR$/src/Controller/OffreController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/addcatController.java" afterPath="$PROJECT_DIR$/src/Controller/addcatController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/listeoffres.java" afterPath="$PROJECT_DIR$/src/Controller/listeoffres.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/offreinfo.java" afterPath="$PROJECT_DIR$/src/Controller/offreinfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/updateCatController.java" afterPath="$PROJECT_DIR$/src/Controller/updateCatController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAODetail.java" afterPath="$PROJECT_DIR$/src/DAO/DAODetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOForm.java" afterPath="$PROJECT_DIR$/src/DAO/DAOForm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOIngredient.java" afterPath="$PROJECT_DIR$/src/DAO/DAOIngredient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOPrice.java" afterPath="$PROJECT_DIR$/src/DAO/DAOPrice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAORole.java" afterPath="$PROJECT_DIR$/src/DAO/DAORole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOUser.java" afterPath="$PROJECT_DIR$/src/DAO/DAOUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/IDAO.java" afterPath="$PROJECT_DIR$/src/DAO/IDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DBLinking/BDDManager.java" afterPath="$PROJECT_DIR$/src/DBLinking/BDDManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Style/Style.css" afterPath="$PROJECT_DIR$/src/Style/Style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/HomePage.fxml" afterPath="$PROJECT_DIR$/src/Views/HomePage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/LoginPage.fxml" afterPath="$PROJECT_DIR$/src/Views/LoginPage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/Offre.fxml" afterPath="$PROJECT_DIR$/src/Views/Offre.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/offreinfo.fxml" afterPath="$PROJECT_DIR$/src/Views/offreinfo.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/beans/ingredients.java" afterPath="$PROJECT_DIR$/src/beans/ingredients.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -687,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514316723969</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="GRestaurant Project">
+      <created>1514508677751</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1514508677752</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
