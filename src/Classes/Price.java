@@ -16,7 +16,7 @@ public class Price {
     private int id;
     private Date date;
     private float price;
-    private Ingrediant ingredient=null;
+    private int ingredientId=-1;
     public Price() {
     }
     public Price(int id,Date date,float price) {
@@ -24,11 +24,11 @@ public class Price {
         this.date=date;
         this.price=price;
     }
-    public Price(int id,Date date,float price,Ingrediant ingredient) {
+    public Price(int id,Date date,float price,int ingredientId) {
         this.id=id;
         this.date=date;
         this.price=price;
-        this.ingredient=ingredient;
+        this.ingredientId=ingredientId;
     }
     
     
@@ -56,17 +56,17 @@ public class Price {
     }
 
     /**
-     * @return the ingredient
+     * @return the ingredientId
      */
-    public Ingrediant getIngredient() {
-        return ingredient;
+    public int getIngredientId() {
+        return ingredientId;
     }
 
     /**
-     * @param ingredient the ingredient to set
+     * @param ingredientId the ingredientId to set
      */
-    public void setIngredient(Ingrediant ingredient) {
-        this.ingredient = ingredient;
+    public void setIngredientId(int ingredientId) {
+        this.ingredientId = ingredientId;
     }
 
     /**
