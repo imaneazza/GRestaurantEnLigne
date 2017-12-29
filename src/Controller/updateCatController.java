@@ -1,4 +1,7 @@
 package Controller;
+import Classes.Ingrediant;
+import Metier.MetierCategory;
+import Metier.MetierIngredient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,13 +24,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class updateCatController implements Initializable {
-    private  long idingredient;
+    private  int idingredient;
+
 
     public  long getIdingredient() {
         return idingredient;
     }
 
-    public  void setIdingredient(long idingredient) {
+    public  void setIdingredient(int idingredient) {
         idingredient = idingredient;
     }
 
@@ -53,31 +57,33 @@ public class updateCatController implements Initializable {
 
        @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(idingredient);
-        //getingredient byid;
-           //getcategoris
-
-           ObservableList<String> options =
-                   FXCollections.observableArrayList(
-                           "Cat1 ",
-                           "Cat2"
-                   );
-                    options.add("Cat3");
-                    combocat.setItems(options);
-           txtlibelleupdate.setText("Old Libelle");
-           txtuniteupdate.setText("Old Unite");
-           combocat.setValue("Cat3");
-
+           System.out.println("ingg"+idingredient);
 
        }
+    public void ajouterdetail(){
+           System.out.println("ing"+idingredient);
 
+        Ingrediant x=new MetierIngredient().find(idingredient);
+       ObservableList<String> options =
+                FXCollections.observableArrayList(
+                        "Cat1 ",
+                        "Cat2"
+                );
+        options.add("Cat3");
+        combocat.setItems(options);
+        txtlibelleupdate.setText("Old Libelle");
+        txtuniteupdate.setText("Old Unite");
+        combocat.setValue("Cat3");
+    }
     @FXML
     void GoToOffre() throws IOException {
         Stage primaryStage=new Stage();
         pan1.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
         primaryStage.setTitle("Gestion catégories des ingrédients Page");
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
 
@@ -89,7 +95,9 @@ public class updateCatController implements Initializable {
         pan1.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
         primaryStage.setTitle("Creation Offre Page");
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -105,16 +113,21 @@ public class updateCatController implements Initializable {
     @FXML
     void gotolisteing(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        Parent root = null;
+        Parent root ;
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Views/Catinfo.fxml"));
         root = loader.load();
         CatInfoController cat=loader.getController();
+        MetierIngredient ing=new MetierIngredient();
+        System.out.println("ing"+idingredient);
         cat.setIdingredient(idingredient);
+        cat.setId_cat(ing.find(idingredient).getCategoryId());
 
         //get categorie
         menu.getScene().getWindow().hide();
-        stage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(x);
         stage.setTitle("Détail Categorie");
         stage.setResizable(false);
         stage.setWidth(800);
@@ -132,7 +145,9 @@ public class updateCatController implements Initializable {
         root = loader.load();
 
         menu.getScene().getWindow().hide();
-        stage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(x);
         stage.setTitle("Liste des Offres ");
         stage.setResizable(false);
         stage.setWidth(800);

@@ -25,7 +25,6 @@ public class DAOUser extends DAO implements IDAOUser{
         private String login = "login";
         private String password = "password";
         private String roleId = "roleId";
-        DAORole daoRole=new DAORole();
         public DAOUser() {
         super();
     }
@@ -132,8 +131,9 @@ public class DAOUser extends DAO implements IDAOUser{
     @Override
     public ArrayList<User> findByRole(Role role) {
         try {
-            statement.setInt(1,role.getId());
             statement = createStatement("SELECT * FROM user WHERE roleId=?;");
+            statement.setInt(1,role.getId());
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

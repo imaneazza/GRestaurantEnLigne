@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
@@ -42,7 +43,9 @@ private File file;
         Stage primaryStage=new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/Views/HomePage.fxml"));
         primaryStage.setTitle("Home Page");
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.show();
 
     }
@@ -76,7 +79,9 @@ private File file;
         root = loader.load();
 
         labelx.getScene().getWindow().hide();
-        stage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(x);
         stage.setTitle("Liste des Offres ");
         stage.setResizable(false);
         stage.setWidth(800);
@@ -111,17 +116,35 @@ private File file;
             }
 
         }
+
+
         return outputFile;
 
     }
     @FXML
-    void AddOffre(ActionEvent event) {
+    void AddOffre(ActionEvent event) throws IOException {
         File x=openNewImageWindow(00);
         //add Cat
         System.out.println(x.toURI().toString());
         String[] liste=x.toURI().toString().split("/");
         String a=liste[liste.length-3]+"/"+liste[liste.length-2]+"/"+liste[liste.length-1];
+
         System.out.println(a);
+        Stage stage = new Stage();
+        Parent root = null;
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Views/step2Offre.fxml"));
+        root = loader.load();
+
+        labelx.getScene().getWindow().hide();
+        Scene sc=new Scene(root);
+        sc.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(sc);
+        stage.setTitle("Ajouter les Formes ");
+        stage.setResizable(false);
+        stage.setWidth(800);
+        stage.setHeight(600);
+        stage.show();
     }
 
 
@@ -132,7 +155,9 @@ private File file;
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
         primaryStage.setTitle("Creation Offre Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -143,7 +168,9 @@ private File file;
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
         primaryStage.setTitle("Gestion catégories des ingrédients Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

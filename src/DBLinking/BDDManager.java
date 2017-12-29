@@ -34,10 +34,7 @@ public class BDDManager {
             Logger.getLogger(BDDManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            /*String url="jdbc:mysql://localhost:3306/categoriebdd";
-        */
-            System.out.println(driver+" "+host+" "+getDBName());
-            setCon(DriverManager.getConnection(String.format("%s://%s/%s", driver,host,DBName),DBUser,DBPassword));
+         setCon(DriverManager.getConnection(String.format("%s://%s/%s", driver,host,DBName),DBUser,DBPassword));
         } catch (SQLException ex) {
             Logger.getLogger(BDDManager.class.getName()).log(Level.SEVERE, null, ex);
         }

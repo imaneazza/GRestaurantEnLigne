@@ -26,7 +26,6 @@ public class DAODetail extends DAO implements IDAODetail {
     private String obligatory = "obligatory";
     private String qteMin = "qteMin";
     private String qteMax = "qteMax";
-    private DAOForm daoForm = new DAOForm();
     private DAOIngredient daoIngredient = new DAOIngredient();
 
     public DAODetail() {

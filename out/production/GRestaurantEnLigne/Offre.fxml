@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OffreController">
+<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="346.0" minWidth="600.0" prefHeight="346.0" prefWidth="600.0" styleClass="paneall" stylesheets="@../Style/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OffreController">
    <children>
-      <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="644.0">
+      <MenuBar fx:id="menu" minHeight="25.0" minWidth="600.0" prefHeight="25.0" prefWidth="641.0">
          <menus>
             <Menu mnemonicParsing="false" text="Gérer les Offres">
                <items>
@@ -25,32 +25,13 @@
             <Menu mnemonicParsing="false" text="Activer les Offres" />
          </menus>
       </MenuBar>
-      <Pane layoutY="25.0" prefHeight="88.0" prefWidth="644.0" style="-fx-background-color: red;">
+      <Pane layoutY="25.0" minHeight="288.0" minWidth="600.0" prefHeight="319.0" prefWidth="600.0">
          <children>
-            <ImageView fitHeight="73.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pictures/logo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutY="112.0" prefHeight="288.0" prefWidth="644.0">
-         <children>
-            <Label layoutX="28.0" layoutY="43.0" prefHeight="38.0" prefWidth="132.0" text="Nom de L'Offre">
-               <font>
-                  <Font name="System Bold Italic" size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="26.0" layoutY="123.0" prefHeight="38.0" prefWidth="132.0" text="L'image de L'Offre">
-               <font>
-                  <Font name="System Bold Italic" size="13.0" />
-               </font>
-            </Label>
-            <TextField layoutX="257.0" layoutY="51.0" prefHeight="25.0" prefWidth="287.0" />
-            <Button fx:id="validate" layoutX="334.0" layoutY="194.0" mnemonicParsing="false" onAction="#AddOffre" prefHeight="38.0" prefWidth="210.0" text="NextStep" />
-            <Button layoutX="113.0" layoutY="194.0" mnemonicParsing="false" onAction="#annuler" prefHeight="38.0" prefWidth="164.0" text="Annuler" />
-            <Label fx:id="labelx" layoutX="257.0" layoutY="125.0" prefHeight="36.0" prefWidth="246.0" text="Label" />
-            <Button fx:id="openButton" layoutX="501.0" layoutY="130.0" mnemonicParsing="false" text="Open" />
+            <TextField layoutX="145.0" layoutY="14.0" prefHeight="25.0" prefWidth="287.0" promptText="Nom de l'Offre" styleClass="textaddoffre" stylesheets="@../Style/Style.css" />
+            <Button fx:id="validate" layoutX="526.0" layoutY="268.0" mnemonicParsing="false" onAction="#AddOffre" prefHeight="38.0" prefWidth="60.0" text="Next" />
+            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="80.0" text="Annuler" />
+            <Label fx:id="labelx" layoutX="160.0" layoutY="275.0" prefHeight="25.0" prefWidth="281.0" text="Label" />
+            <Button fx:id="openButton" layoutX="438.0" layoutY="262.0" mnemonicParsing="false" text="Open" />
          </children>
       </Pane>
    </children>

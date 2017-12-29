@@ -27,7 +27,9 @@ public class AddIngredientController {
         root = loader.load();
 
         menu.getScene().getWindow().hide();
-        stage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(x);
         stage.setTitle("Liste des Offres ");
         stage.setResizable(false);
         stage.setWidth(800);
@@ -64,7 +66,9 @@ public class AddIngredientController {
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
         primaryStage.setTitle("Creation Offre Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -75,7 +79,9 @@ public class AddIngredientController {
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
         primaryStage.setTitle("Gestion catégories des ingrédients Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

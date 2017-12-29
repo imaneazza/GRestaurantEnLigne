@@ -25,10 +25,9 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     private String id = "id";
     private String name = "name";
     private String uniteMesure = "uniteMesure";
-    private String stock = "stock";
+    private String stock = "qte";
     private String categoryId = "categoryId";
-    private DAOCategory daoCategory = new DAOCategory();
-    private DAOPrice daoPrice=new DAOPrice();
+    DAOPrice daoPrice=new DAOPrice();
 
     public DAOIngredient() {
         super();
@@ -39,7 +38,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         try {
             ResultSet rs = statement.executeQuery();
             ArrayList<Ingrediant> list=new ArrayList<Ingrediant>();
-            if (rs.next()) {
+            while (rs.next()) {
                 Ingrediant ingredient =ResultSetToObject(rs);
                 list.add(ingredient);
             }
@@ -147,8 +146,8 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
                 return UniteMesure.ml;
             case "cl":
                 return UniteMesure.cl;
-            case "l":
-                return UniteMesure.l;
+            case "litres":
+                return UniteMesure.litres;
             case "mg":
                 return UniteMesure.mg;
             case "cg":
@@ -181,6 +180,10 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         return addStock(ingredient,-quantity);
     }
     public ArrayList<Price> getPrices(Ingrediant ingrediant){
-        return daoPrice.findByIngrediant(ingrediant);
+
+        DAOPrice daoPrice=new DAOPrice();
+        ArrayList<Price>liste= daoPrice.findByIngrediant(ingrediant);
+        daoPrice.getManager().close();
+        return  liste;
     }
 }

@@ -27,10 +27,10 @@ public class HomeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
            ObservableList<Data> liste= FXCollections.observableArrayList(
-                new Data("A",20),
-                new Data("B",40),
-                new Data("C",30),
-                new Data("D",10));
+                new Data("Tajines",40),
+                new Data("Salades",30),
+                new Data("Panini",20),
+                new Data("Sandwich",10));
         piechart.setData(liste);
     }
     @FXML
@@ -49,8 +49,9 @@ public class HomeController implements Initializable {
         root = loader.load();
 
         menu.getScene().getWindow().hide();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Liste des Offres ");
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(x);
         stage.setResizable(false);
         stage.setWidth(800);
         stage.setHeight(600);
@@ -63,8 +64,9 @@ public class HomeController implements Initializable {
         piechart.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
         primaryStage.setTitle("Creation Offre Page");
-
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -75,7 +77,9 @@ public class HomeController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
         primaryStage.setTitle("Gérer Catégories des Ingrédients  Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

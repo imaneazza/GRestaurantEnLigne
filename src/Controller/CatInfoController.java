@@ -1,5 +1,8 @@
 package Controller;
 
+import Classes.Category;
+import Classes.Ingrediant;
+import Metier.MetierCategory;
 import beans.ingredients;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,17 +22,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CatInfoController implements Initializable{
-    private  long id_cat;
-    private long idingredient;
+    private  int id_cat;
+    private int idingredient;
+    private MetierCategory catmetier=new MetierCategory();
+    private Category cat;
 
-    public void setIdingredient(long idingredient) {
+    public void setIdingredient(int idingredient) {
         this.idingredient = idingredient;
     }
 
-    public long getIdingredient() {
+    public int getIdingredient() {
         return idingredient;
     }
 
@@ -75,13 +81,13 @@ public class CatInfoController implements Initializable{
             root = loader.load();
             updateCatController cat=loader.getController();
             cat.setIdingredient(idingredient);
-
-            //get categorie
+            cat.ajouterdetail();
             pan1.getScene().getWindow().hide();
-            stage.setScene(new Scene(root));
+            Scene x=new Scene(root);
+            x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+            stage.setScene(x);
             stage.setTitle("Update Categorie");
             stage.setResizable(false);
-            //set Stage boundaries to visible bounds of the main screen
             stage.setWidth(800);
             stage.setHeight(600);
             stage.show();
@@ -106,7 +112,7 @@ public class CatInfoController implements Initializable{
 
 
 
-    public  void setId_cat(long id_cat) {
+    public  void setId_cat(int id_cat) {
         this.id_cat = id_cat;
 
     }
@@ -138,42 +144,47 @@ public class CatInfoController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    //getingredients by cat
-       Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-       ingredientsliste.clear();
-        ingredientsliste.addAll(new ingredients(1,"ingredient1","gramme",20.20),
-                new ingredients(10,"ingredient1555","litres",20.20));
-
-      libelle.setCellValueFactory(new PropertyValueFactory<ingredients,String>("libelle"));
-        unite.setCellValueFactory(new PropertyValueFactory<ingredients,String>("unite"));
-        price.setCellValueFactory(new PropertyValueFactory<ingredients,Double>("prix"));
-        table.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    show(newValue);setIdingredient(newValue.getId());
-                    update.setDisable(false);
-                    delete.setDisable(false);
-
-                });
-
-        update.setDisable(true);
-        delete.setDisable(true);
-
-        table.setItems(ingredientsliste);
-
 
 
     }
+public void setTable(){
 
+    cat=catmetier.find(id_cat);
+
+    ArrayList<Ingrediant> listeingredients=catmetier.getIngrediants(cat);
+
+
+    ingredientsliste=FXCollections.observableArrayList();
+    ingredientsliste.clear();
+    for(Ingrediant ing:listeingredients){
+        ingredientsliste.addAll(new ingredients(ing.getId(),ing.getName(),ing.getUnitMesure().toString(),ing.getCurrentPrice().getPrice()));
+    }
+
+    libelle.setCellValueFactory(new PropertyValueFactory<ingredients,String>("libelle"));
+    unite.setCellValueFactory(new PropertyValueFactory<ingredients,String>("unite"));
+    price.setCellValueFactory(new PropertyValueFactory<ingredients,Double>("prix"));
+    table.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> {
+                show(newValue);
+                setIdingredient(newValue.getId());
+                update.setDisable(false);
+                delete.setDisable(false);
+
+            });
+
+    update.setDisable(true);
+    delete.setDisable(true);
+
+    table.setItems(ingredientsliste);
+}
     private void show(ingredients ing) {
         if (ing != null) {
             // Fill the labels with info from the person object.
             txtlibelle.setText(ing.getLibelle());
             txtprix.setText(String.valueOf(ing.getPrix()));
             txtunite.setText(ing.getUnite());
-            System.out.println("id"+ing.getId());
 
         } else {
-            // Person is null, remove all the text.
             txtlibelle.setText("");
             txtprix.setText("");
             txtunite.setText("");
@@ -188,7 +199,9 @@ public class CatInfoController implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
         primaryStage.setTitle("Creation Offre Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -202,7 +215,9 @@ public class CatInfoController implements Initializable{
         root = loader.load();
 
         menu.getScene().getWindow().hide();
-        stage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(x);
         stage.setTitle("Liste des Offres ");
         stage.setResizable(false);
         stage.setWidth(800);
@@ -217,7 +232,9 @@ public class CatInfoController implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
         primaryStage.setTitle("Gestion catégories des ingrédients Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

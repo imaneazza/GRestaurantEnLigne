@@ -1,0 +1,32 @@
+.panelogin {
+    -fx-background-image: url("../pictures/bg.jpg");
+    -fx-background-size:100%;
+    -fx-background-repeat:no-repeat;
+}
+.btnconnect{
+    -fx-background-color: orange;
+    -fx-border-color:black;
+    -fx-border-radius:5px;
+}
+
+.Zonetext{
+    -fx-border-color:black;
+}
+.paneall {
+    -fx-background-image: url("../pictures/bgall.jpg");
+    -fx-background-size:cover;
+    -fx-background-repeat:no-repeat;
+}
+.piechart{
+    -fx-background-color:transparent;
+    -fx-z-index:100;
+}
+.imageview{
+    -fx-border-radius:50%;
+    -fx-background-color:red;
+
+}
+.textaddoffre{
+    -fx-font-color:#3D3938;
+    -fx-background-color:#C7BD9D
+}

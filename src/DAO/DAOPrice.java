@@ -24,7 +24,6 @@ public class DAOPrice extends DAO implements IDAOPrice{
     private String date = "date";
     private String price = "price";
     private String ingredientId = "ingredientId";
-    private DAOIngredient daoIngredient=new DAOIngredient();
     public DAOPrice() {
         super();
     }
@@ -114,7 +113,8 @@ public class DAOPrice extends DAO implements IDAOPrice{
     @Override
     public Price ResultSetToObject(ResultSet rs) {
        try {
-            Price p = new Price(rs.getInt(id), rs.getDate(date), rs.getFloat(price),daoIngredient.find(rs.getInt(ingredientId)));
+           DAOIngredient daoIngredient=new DAOIngredient();
+            Price p = new Price(rs.getInt(id), rs.getDate(date), rs.getFloat(price),null);
             return p;
         } catch (SQLException ex) {
             Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);

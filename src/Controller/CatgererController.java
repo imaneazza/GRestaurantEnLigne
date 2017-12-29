@@ -1,6 +1,7 @@
 package Controller;
 
 import Classes.Category;
+import DAO.DAOCategory;
 import Metier.MetierCategory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -37,6 +39,8 @@ public class CatgererController implements Initializable {
 
     @FXML
     private Pane pan11;
+    MetierCategory cat=new MetierCategory();
+    ArrayList<Category> liste=cat.getAll();
     @FXML
     private MenuBar menu;
 
@@ -45,10 +49,8 @@ public class CatgererController implements Initializable {
     private MetierCategory catmetier;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        catmetier=new MetierCategory();
-        Map<Integer,Category>listecat=catmetier.getAll();
-        int count=listecat.size()/6;
-        page.setPageCount(listecat.size()%6==0?count:count+1);
+        int count=liste.size()/6;
+        page.setPageCount(liste.size()%6==0?count:count+1);
        page.setPageFactory((Integer pageIndex) -> createPage(pageIndex));
 
   }
@@ -62,7 +64,9 @@ public class CatgererController implements Initializable {
         root = loader.load();
 
         menu.getScene().getWindow().hide();
-        stage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        stage.setScene(x);
         stage.setTitle("Liste des Offres ");
         stage.setResizable(false);
         stage.setWidth(800);
@@ -86,22 +90,26 @@ public class CatgererController implements Initializable {
         ImageView im;
 
 
-
+int a;
         for(int i=0;i<3;i++) {
+            a = pageIndex * 6 + i;
+            if (liste.size() > a) {
+                Category category = liste.get(a);
+                im = new ImageView(new Image(category.getImageSource()));
+                im.setFitHeight(150);
+                im.setFitWidth(150);
 
-              im = new ImageView(new Image("images/categories/cat" + (pageIndex * 9 + (i + 1)) + ".jpg"));
-              im.setFitHeight(150);
-              im.setFitWidth(150);
+                gpanel.add(im, i, (i < 4) ? 0 : 1);
+                gpanel.setHalignment(im, HPos.CENTER);
 
-              gpanel.add(im, i, 0);
-              gpanel.setHalignment(im, HPos.CENTER);
-
+            }
         }
 
-        for (int i = 0 ; i < 3 ; i++) {
-            for (int j = 0; j < 2; j++) {
-                addPane(i, j,pageIndex);
-            }}
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 2; j++) {
+                    addPane(i, j, pageIndex);
+                }
+            }
 
         return gpanel;
 
@@ -109,32 +117,38 @@ public class CatgererController implements Initializable {
 
     private void addPane(int colIndex, int rowIndex ,int page) {
         Pane pane = new Pane();
-        pane.setOnMouseClicked(e -> {
-            Stage stage = new Stage();
-            Parent root = null;
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/Views/Catinfo.fxml"));
-                root = loader.load();
-                CatInfoController cat=loader.getController();
-                cat.setId_cat( (page)*9+((rowIndex)*3+(colIndex+1)));
+        int a;
+             a=(page * 6) + (rowIndex*2)+colIndex;
+        System.out.println(liste.size()+"hellow");
+            if (liste.size() > a) {
+                pane.setOnMouseClicked(e -> {
+                    Stage stage = new Stage();
+                    Parent root = null;
+                    try {
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/Views/Catinfo.fxml"));
+                        root = loader.load();
+                        CatInfoController cat = loader.getController();
+                        System.out.println("iddd"+liste.get(a).getId());
+                        cat.setId_cat(liste.get(a).getId());
+                        cat.setTable();
+                        gpanel.getScene().getWindow().hide();
+                        Scene x = new Scene(root);
+                        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+                        stage.setScene(x);
+                        stage.setTitle("Détail Categorie");
+                        stage.setResizable(false);
+                        stage.setWidth(800);
+                        stage.setHeight(600);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
 
-                //get categorie
-                gpanel.getScene().getWindow().hide();
-                stage.setScene(new Scene(root));
-                stage.setTitle("Détail Categorie");
-                stage.setResizable(false);
-               stage.setWidth(800);
-                stage.setHeight(600);
-                //stage.initModality(Modality.WINDOW_MODAL);
-            } catch (IOException e1) {
-                e1.printStackTrace();
+                    stage.initOwner(
+                            ((Node) e.getSource()).getScene().getWindow());
+                    stage.show();
+                });
             }
-
-            stage.initOwner(
-                    ((Node)e.getSource()).getScene().getWindow() );
-            stage.show();
-        });
         gpanel.add(pane, colIndex, rowIndex);
     }
     @FXML
@@ -144,7 +158,9 @@ public class CatgererController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
         primaryStage.setTitle("Creation Offre Page");
 
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -154,7 +170,9 @@ public class CatgererController implements Initializable {
         gpanel.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
         primaryStage.setTitle("Gestion catégories des ingrédients Page");
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -164,7 +182,9 @@ public class CatgererController implements Initializable {
         gpanel.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("/Views/addcat.fxml"));
         primaryStage.setTitle("Ajouter Catégorie Page");
-        primaryStage.setScene(new Scene(root));
+        Scene x=new Scene(root);
+        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
+        primaryStage.setScene(x);
         primaryStage.setResizable(false);
         primaryStage.show();    }
 }

@@ -12,7 +12,7 @@ package Classes;
 public enum UniteMesure {
     ml,
     cl,
-    l,
+    litres,
     mg,
     cg,
     g,

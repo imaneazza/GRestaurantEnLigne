@@ -2,6 +2,7 @@ package beans;
 
 import Controller.CatInfoController;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -18,14 +19,14 @@ import Controller.updateCatController;
 import java.io.IOException;
 
 public class ingredients {
-    private final SimpleLongProperty id;
+    private final SimpleIntegerProperty id;
     private final SimpleStringProperty libelle;
     private final SimpleStringProperty unite;
     private final SimpleDoubleProperty prix;
 
 
-    public ingredients(long id, String libelle, String unite, double prix) {
-        this.id = new SimpleLongProperty(id);
+    public ingredients(int id, String libelle, String unite, double prix) {
+        this.id = new SimpleIntegerProperty(id);
         this.libelle = new SimpleStringProperty(libelle);
         this.unite = new SimpleStringProperty(unite);
         this.prix = new SimpleDoubleProperty(prix);
@@ -35,7 +36,7 @@ public class ingredients {
 
     }
 
-    public long getId() {
+    public int getId() {
         return id.get();
     }
 

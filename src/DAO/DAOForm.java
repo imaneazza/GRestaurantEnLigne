@@ -26,7 +26,6 @@ public class DAOForm extends DAO implements IDAOForm{
     private String id = "id";
     private String name = "name";
     private String idOffer = "idOffer";
-    private DAOOffer daoOffer = new DAOOffer();
     private DAODetail daoDetails=new DAODetail();
 
     public DAOForm() {
