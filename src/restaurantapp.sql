@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `imageSource` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -57,7 +57,7 @@ CREATE TABLE `detail` (
 --
 
 CREATE TABLE `form` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `OfferId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -69,7 +69,7 @@ CREATE TABLE `form` (
 --
 
 CREATE TABLE `ingredient` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `uniteMesure` varchar(10) NOT NULL,
   `qte` decimal(10,0) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE `ingredient` (
 --
 
 CREATE TABLE `Offer` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `imageSource` varchar(40) NOT NULL,
   `state` tinyint(1) DEFAULT NULL
@@ -96,7 +96,7 @@ CREATE TABLE `Offer` (
 --
 
 CREATE TABLE `price` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `date` date NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `ingredientId` int(11) DEFAULT NULL
@@ -109,7 +109,7 @@ CREATE TABLE `price` (
 --
 
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -129,7 +129,7 @@ INSERT INTO `role` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `lName` varchar(40) NOT NULL,
   `fName` varchar(40) NOT NULL,
   `login` varchar(40) NOT NULL,
@@ -138,60 +138,39 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `detail`
 --
 ALTER TABLE `detail`
-  ADD PRIMARY KEY (`idForm`,`idingredient`),
   ADD KEY `fk_detail_ingrediant_idx` (`idingredient`);
 
 --
 -- Indexes for table `form`
 --
 ALTER TABLE `form`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_form_offer_idx` (`OfferId`);
 
 --
 -- Indexes for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_ingredient_1_idx` (`categoryId`);
 
---
--- Indexes for table `Offer`
---
-ALTER TABLE `Offer`
-  ADD PRIMARY KEY (`id`);
+
 
 --
 -- Indexes for table `price`
 --
 ALTER TABLE `price`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_price_ingrediant_idx` (`ingredientId`);
 
---
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
+
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_role_idx` (`roleId`);
 
 --
@@ -232,5 +211,3 @@ ALTER TABLE `user`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-INSERT INTO role(`id`,`name`) VALUES(1,'web master'),(2,'chef cuisine'),(3,'chef stock');

@@ -44,12 +44,13 @@ public class DAOPrice extends DAO implements IDAOPrice{
 
     @Override
     public int executeQuery(String query, Price o) {
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setDate(1, new java.sql.Date(o.getDate().getTime()));
             statement.setFloat(2, o.getPrice());
-            statement.setFloat(3, o.getId());
-            return statement.executeUpdate();
+            statement.setFloat(3, o.getIngredientId());
+            statement.setFloat(4, o.getId());
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,21 +59,21 @@ public class DAOPrice extends DAO implements IDAOPrice{
 
     @Override
     public int create(Price o) {
-        return executeQuery("INSERT INTO price(date,price,id) Values(?,?,?);",o);
+        return executeQuery("INSERT INTO (`price`,`date`,`ingredientId`,`id`) VALUES(?,?,?,?)",o);
 
     }
 
     @Override
     public int update(Price o) {
-        return executeQuery("UPDATE price SET date=?,price=? WHERE id=?;",o);
+        return executeQuery("UPDATE price SET price=?,date=?,ingredientId=? WHERE id=?;",o);
     }
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM ingredient WHERE id=?;");
+        statement = createStatement("DELETE FROM price WHERE id=?;");
         try {
             statement.setInt(1, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -113,9 +114,7 @@ public class DAOPrice extends DAO implements IDAOPrice{
     @Override
     public Price ResultSetToObject(ResultSet rs) {
        try {
-           DAOIngredient daoIngredient=new DAOIngredient();
-            Price p = new Price(rs.getInt(id), rs.getDate(date), rs.getFloat(price),null);
-            return p;
+            return new Price(rs.getInt(id), rs.getDate(date), rs.getFloat(price),rs.getInt(ingredientId));
         } catch (SQLException ex) {
             Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);
         }

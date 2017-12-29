@@ -28,12 +28,12 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public int executeQuery(String query, Category o) {
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setString(1, o.getName());
             statement.setString(2, o.getImageSource());
             statement.setInt(3, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -85,7 +85,7 @@ public class DAOCategory extends DAO implements IDAOCategory {
         statement = createStatement("DELETE FROM category WHERE id=?;");
         try {
             statement.setInt(3, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -51,14 +51,14 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
 
     @Override
     public int executeQuery(String query, Ingrediant o) {
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setString(1, o.getName());
             statement.setString(2, o.getUnitMesure().toString());
             statement.setInt(3, o.getStock());
             statement.setInt(4, o.getCategoryId());
             statement.setInt(5, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,7 +93,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         statement = createStatement("DELETE FROM ingredient WHERE id=?;");
         try {
             statement.setInt(1, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -168,7 +168,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         try {
             statement.setInt(1, quantity);
             statement.setInt(2, ingredient.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }

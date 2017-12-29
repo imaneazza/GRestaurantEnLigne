@@ -23,11 +23,11 @@ public class DAORole extends DAO implements IDAORole{
 
     @Override
     public int executeQuery(String query, Role o) {
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setString(1, o.getName());
             statement.setInt(1, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAORole.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -64,7 +64,7 @@ public class DAORole extends DAO implements IDAORole{
         statement = createStatement("DELETE FROM role WHERE id=?;");
         try {
             statement.setInt(3, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAORole.class.getName()).log(Level.SEVERE, null, ex);
         }

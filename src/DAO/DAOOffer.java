@@ -33,13 +33,13 @@ public class DAOOffer extends DAO implements IDAOOffer {
 
     @Override
     public int executeQuery(String query,Offer o){
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setString(1, o.getName());
             statement.setString(2, o.getImageSource());
             statement.setBoolean(3, o.getState());
             statement.setInt(4, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOOffer.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,7 +60,7 @@ public class DAOOffer extends DAO implements IDAOOffer {
         statement = createStatement("DELETE FROM Offer WHERE id=?;");
         try {
             statement.setInt(1, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOOffer.class.getName()).log(Level.SEVERE, null, ex);
         }
