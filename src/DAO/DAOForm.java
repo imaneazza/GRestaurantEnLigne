@@ -33,11 +33,11 @@ public class DAOForm extends DAO implements IDAOForm{
     }
     @Override
     public int executeQuery(String query,Form o){
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setString(2, o.getName());
             statement.setInt(1, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,10 +57,10 @@ public class DAOForm extends DAO implements IDAOForm{
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM form WHERE id=?;");
+        statement = createStatement("DELETE FROM form WHERE id=?;SELECT LAST_INSERT_ID();");
         try {
             statement.setInt(1, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
         }

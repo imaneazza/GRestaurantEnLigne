@@ -44,7 +44,7 @@ public class DAOUser extends DAO implements IDAOUser{
 
     @Override
     public int executeQuery(String query, User o) {
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setString(1, o.getfName());
             statement.setString(2, o.getlName());
@@ -52,7 +52,7 @@ public class DAOUser extends DAO implements IDAOUser{
             statement.setString(4, o.getPassword());
             statement.setInt(5, o.getRoleId());
             statement.setInt(6, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -71,10 +71,10 @@ public class DAOUser extends DAO implements IDAOUser{
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM user WHERE id=?;");
+        statement = createStatement("DELETE FROM user WHERE id=?;SELECT LAST_INSERT_ID();");
         try {
             statement.setInt(1, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOUser.class.getName()).log(Level.SEVERE, null, ex);
         }

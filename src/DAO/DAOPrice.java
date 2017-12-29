@@ -44,12 +44,12 @@ public class DAOPrice extends DAO implements IDAOPrice{
 
     @Override
     public int executeQuery(String query, Price o) {
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setDate(1, new java.sql.Date(o.getDate().getTime()));
             statement.setFloat(2, o.getPrice());
             statement.setFloat(3, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,10 +69,10 @@ public class DAOPrice extends DAO implements IDAOPrice{
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM ingredient WHERE id=?;");
+        statement = createStatement("DELETE FROM price WHERE id=?;SELECT LAST_INSERT_ID();");
         try {
             statement.setInt(1, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);
         }

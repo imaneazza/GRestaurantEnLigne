@@ -6,6 +6,11 @@
 package DBLinking;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,4 +30,16 @@ public class DAO {
     public BDDManager getManager() {
         return manager;
     }
+
+
+
+            public int executeToInt(){
+                try {
+                    ResultSet rs= statement.executeQuery();
+                    if(rs.next())   return rs.getInt(1);
+                } catch (SQLException ex) {
+                    System.out.println(ex.getErrorCode()+ex.getMessage());
+                }
+                return -1;
+            }
 }
