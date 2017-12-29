@@ -1,4 +1,5 @@
-# exclude everything except directory foo/bar
-    /*
-    !/src
-    !/.gitignore
+/*
+/.idea/*
+!/src
+!/.gitignore
+/src/DBLinking/*
