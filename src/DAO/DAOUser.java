@@ -71,7 +71,7 @@ public class DAOUser extends DAO implements IDAOUser{
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM user WHERE id=?;SELECT LAST_INSERT_ID();");
+        statement = createStatement("DELETE FROM user WHERE id=?;");
         try {
             statement.setInt(1, id);
             return executeToInt();

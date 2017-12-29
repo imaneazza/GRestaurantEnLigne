@@ -57,7 +57,7 @@ public class DAOForm extends DAO implements IDAOForm{
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM form WHERE id=?;SELECT LAST_INSERT_ID();");
+        statement = createStatement("DELETE FROM form WHERE id=?;");
         try {
             statement.setInt(1, id);
             return executeToInt();

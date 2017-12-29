@@ -77,7 +77,7 @@ public class DAODetail extends DAO implements IDAODetail {
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM detail WHERE id=?;SELECT LAST_INSERT_ID();");
+        statement = createStatement("DELETE FROM detail WHERE id=?;");
         try {
             statement.setInt(1, id);
             return executeToInt();

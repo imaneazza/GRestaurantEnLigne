@@ -82,7 +82,7 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM category WHERE id=?;SELECT LAST_INSERT_ID();");
+        statement = createStatement("DELETE FROM category WHERE id=?;");
         try {
             statement.setInt(3, id);
             return executeToInt();

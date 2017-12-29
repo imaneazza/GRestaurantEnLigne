@@ -90,7 +90,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM ingredient WHERE id=?;SELECT LAST_INSERT_ID();");
+        statement = createStatement("DELETE FROM ingredient WHERE id=?;");
         try {
             statement.setInt(1, id);
             return executeToInt();

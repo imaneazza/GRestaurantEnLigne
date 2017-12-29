@@ -1,108 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="GRestaurant Project">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/description.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Addingredient.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Catgerer.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Catinfo.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Category.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Detail.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Form.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Price.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/Role.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/UniteMesure.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Classes/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/AddIngredientController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatInfoController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/CatgererController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/HomeController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/LoginController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/OffreController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/addcatController$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/addcatController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/listeoffres.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/offreinfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Controller/updateCatController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOCategory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAODetail.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOForm.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOIngredient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOPrice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAORole.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/DAOUser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOCategory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAODetail.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOForm.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOIngredient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOPrice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAORole.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DAO/IDAOUser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DBLinking/BDDManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/DBLinking/DAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/HomePage.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/LoginPage.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetier.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierCategory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierDetail.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierForm.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierIngredient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierPrice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierRole.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/IMetierUser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierCategory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierDetail.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierForm.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierIngredient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierRole.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Metier/MetierUser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Offre.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Style/Style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Addingredient.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Catgerer.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Catinfo.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/HomePage.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/LoginPage.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/Offre.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/addcat.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/listeoffres.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/offreinfo.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/Views/updateCat.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/addcat.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/beans/DetailOffre.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/beans/ingredients.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/categories/cat6.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/categories/cat6.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/images/offres/offre1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/listeoffres.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offreinfo.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/offres/offre1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/pictures/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GRestaurantEnLigne/updateCat.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Classes/Price.java" afterPath="$PROJECT_DIR$/src/Classes/Price.java" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOCategory.java" afterPath="$PROJECT_DIR$/src/DAO/DAOCategory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAODetail.java" afterPath="$PROJECT_DIR$/src/DAO/DAODetail.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOForm.java" afterPath="$PROJECT_DIR$/src/DAO/DAOForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOIngredient.java" afterPath="$PROJECT_DIR$/src/DAO/DAOIngredient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOOffer.java" afterPath="$PROJECT_DIR$/src/DAO/DAOOffer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOPrice.java" afterPath="$PROJECT_DIR$/src/DAO/DAOPrice.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAORole.java" afterPath="$PROJECT_DIR$/src/DAO/DAORole.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOUser.java" afterPath="$PROJECT_DIR$/src/DAO/DAOUser.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -118,18 +26,7 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="DAOPrice.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/DAO/DAOPrice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-779">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -186,16 +83,16 @@
         <option value="$PROJECT_DIR$/src/.gitignore" />
         <option value="$PROJECT_DIR$/src/restaurantapp.sql" />
         <option value="$PROJECT_DIR$/src/DBLinking/DAO.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/Classes/Price.java" />
+        <option value="$PROJECT_DIR$/src/DAO/DAOPrice.java" />
         <option value="$PROJECT_DIR$/src/DAO/DAOCategory.java" />
-        <option value="$PROJECT_DIR$/src/DAO/DAOForm.java" />
         <option value="$PROJECT_DIR$/src/DAO/DAODetail.java" />
+        <option value="$PROJECT_DIR$/src/DAO/DAOForm.java" />
         <option value="$PROJECT_DIR$/src/DAO/DAOIngredient.java" />
         <option value="$PROJECT_DIR$/src/DAO/DAOOffer.java" />
         <option value="$PROJECT_DIR$/src/DAO/DAORole.java" />
         <option value="$PROJECT_DIR$/src/DAO/DAOUser.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/Classes/Price.java" />
-        <option value="$PROJECT_DIR$/src/DAO/DAOPrice.java" />
       </list>
     </option>
   </component>
@@ -382,7 +279,7 @@
       <workItem from="1514509517035" duration="1673000" />
       <workItem from="1514512451880" duration="3169000" />
       <workItem from="1514516751271" duration="69000" />
-      <workItem from="1514537286817" duration="2747000" />
+      <workItem from="1514537286817" duration="3109000" />
     </task>
     <task id="LOCAL-00001" summary="GRestaurant Project">
       <created>1514316723968</created>
@@ -440,29 +337,36 @@
       <option name="project" value="LOCAL" />
       <updated>1514540085408</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="GRestaurant Project">
+      <created>1514540776066</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1514540776066</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9513000" />
+    <option name="totallyTimeSpent" value="9875000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1920" height="1053" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37712345" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37712345" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33069083" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33069083" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33069083" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37712345" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26602563" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26602563" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272933" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -537,13 +441,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DAO/IDAODetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DAO/IDAOUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -774,62 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/DAOCategory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="84" column="93" lean-forward="false" selection-start-line="84" selection-start-column="93" selection-end-line="84" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/DAODetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="118" column="26" lean-forward="false" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/DAOForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-826">
-          <caret line="59" column="89" lean-forward="false" selection-start-line="59" selection-start-column="89" selection-end-line="59" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/DAOIngredient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1092">
-          <caret line="92" column="95" lean-forward="false" selection-start-line="92" selection-start-column="95" selection-end-line="92" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/DAOOffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="59" column="90" lean-forward="false" selection-start-line="59" selection-start-column="90" selection-end-line="59" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/DAORole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-218">
-          <caret line="63" column="89" lean-forward="false" selection-start-line="63" selection-start-column="89" selection-end-line="63" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/DAOUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="123" column="13" lean-forward="false" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Classes/Offer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -872,10 +713,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/DAOUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="72" column="31" lean-forward="true" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/DAORole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="63" column="65" lean-forward="false" selection-start-line="63" selection-start-column="65" selection-end-line="63" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DAO/DAOPrice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-779">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="228">
+          <caret line="72" column="66" lean-forward="false" selection-start-line="72" selection-start-column="66" selection-end-line="72" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Classes/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/DAOCategory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="84" column="69" lean-forward="false" selection-start-line="84" selection-start-column="69" selection-end-line="84" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/DAODetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="79" column="67" lean-forward="false" selection-start-line="79" selection-start-column="67" selection-end-line="79" selection-end-column="67" />
+          <folding>
+            <element signature="e#3366#3367#0" expanded="true" />
+            <element signature="e#3447#3448#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/DAOForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="59" column="65" lean-forward="false" selection-start-line="59" selection-start-column="65" selection-end-line="59" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/DAOIngredient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="92" column="71" lean-forward="false" selection-start-line="92" selection-start-column="71" selection-end-line="92" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/DAOOffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
           <folding />
         </state>
       </provider>

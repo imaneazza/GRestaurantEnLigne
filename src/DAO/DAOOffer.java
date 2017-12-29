@@ -57,7 +57,7 @@ public class DAOOffer extends DAO implements IDAOOffer {
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM Offer WHERE id=?;SELECT LAST_INSERT_ID();");
+        statement = createStatement("DELETE FROM Offer WHERE id=?;");
         try {
             statement.setInt(1, id);
             return executeToInt();

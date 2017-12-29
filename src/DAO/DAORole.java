@@ -61,7 +61,7 @@ public class DAORole extends DAO implements IDAORole{
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM role WHERE id=?;SELECT LAST_INSERT_ID();");
+        statement = createStatement("DELETE FROM role WHERE id=?;");
         try {
             statement.setInt(3, id);
             return executeToInt();
