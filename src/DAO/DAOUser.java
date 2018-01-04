@@ -44,7 +44,7 @@ public class DAOUser extends DAO implements IDAOUser{
 
     @Override
     public int executeQuery(String query, User o) {
-        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
+        statement = createStatement(query);
         try {
             statement.setString(1, o.getfName());
             statement.setString(2, o.getlName());
@@ -59,9 +59,11 @@ public class DAOUser extends DAO implements IDAOUser{
         return 0;
     }
 
+
     @Override
     public int create(User o) {
-        return executeQuery("INSERT INTO user(fName,lName,login,password,roleId,id) Values(?,?,?,?,?,?);",o);
+        o.setId(executeQuery("INSERT INTO user(fName,lName,login,password,roleId,id) Values(?,?,?,?,?,?);",o));
+        return o.getId();
     }
 
     @Override
