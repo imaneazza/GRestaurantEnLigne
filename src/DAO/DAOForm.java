@@ -25,7 +25,7 @@ public class DAOForm extends DAO implements IDAOForm{
 
     private String id = "id";
     private String name = "name";
-    private String idOffer = "idOffer";
+    private String idOffer = "OfferId";
     private DAODetail daoDetails=new DAODetail();
 
     public DAOForm() {
@@ -33,19 +33,27 @@ public class DAOForm extends DAO implements IDAOForm{
     }
     @Override
     public int executeQuery(String query,Form o){
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
-            statement.setString(2, o.getName());
-            statement.setInt(1, o.getId());
-            return statement.executeUpdate();
+           statement.setString(1, o.getName());
+            statement.setInt(2, o.getId());
+            statement.setInt(3, o.getOfferId());
+
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
+    public int getlastID() throws SQLException {
+
+        ResultSet rs = statement.executeQuery("Select LAST_INSERT_ID() from form limit 1");
+        rs.next(); //para posicionar el puntero en la primer fila
+        return rs.getInt("LAST_INSERT_ID()");
+    }
     @Override
     public int create(Form o) {
-        return executeQuery("INSERT INTO form(nom,id) Values(?,?);",o);
+        return executeQuery("INSERT INTO form(name,id,OfferId) Values(?,?,?);",o);
 
     }
 
@@ -60,6 +68,8 @@ public class DAOForm extends DAO implements IDAOForm{
         statement = createStatement("DELETE FROM form WHERE id=?;");
         try {
             statement.setInt(1, id);
+
+            daoDetails.delete(id);
             return statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,12 +129,12 @@ public class DAOForm extends DAO implements IDAOForm{
     }
     public ArrayList<Form> executeToArray(){
         try {
-            ArrayList<Form> list=list = new ArrayList<Form>();
+            ArrayList<Form> list=new ArrayList<Form>();
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 Form o = ResultSetToObject(rs);
                 o.setDetails(getDetails(o));
-                list.add(o.getId(), o);
+                list.add( o);
             }
             return list;
         } catch (SQLException e) {

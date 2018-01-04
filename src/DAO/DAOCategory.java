@@ -25,7 +25,6 @@ public class DAOCategory extends DAO implements IDAOCategory {
     private String imageSource = "imageSource";
     private DAOIngredient daoIngredient=new DAOIngredient();
 
-
     @Override
     public int executeQuery(String query, Category o) {
         statement = createStatement(query);
@@ -33,7 +32,7 @@ public class DAOCategory extends DAO implements IDAOCategory {
             statement.setString(1, o.getName());
             statement.setString(2, o.getImageSource());
             statement.setInt(3, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,20 +71,21 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public int create(Category o) {
-        return  executeQuery("INSERT INTO category(nom,imageSource,id) Values(?,?,?);",o);
+        o.setId(executeQuery("INSERT INTO category(name,imageSource,id) Values(?,?,?);",o));
+        return o.getId();
     }
 
     @Override
     public int update(Category o) {
-        return  executeQuery("UPDATE category SET nom=?,imageSource=? WHERE id=?;",o);
+        return  executeQuery("UPDATE category SET name=?,imageSource=? WHERE id=?;",o);
     }
 
     @Override
     public int delete(int id) {
         statement = createStatement("DELETE FROM category WHERE id=?;");
         try {
-            statement.setInt(3, id);
-            return statement.executeUpdate();
+            statement.setInt(1, id);
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
         }

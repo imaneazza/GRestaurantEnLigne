@@ -19,6 +19,10 @@ public class MetierDetail implements IMetierDetail{
     private DAODetail dao=new DAODetail();
 
     @Override
+    public int delete(int id,int ing){
+    return dao.delete(id,ing);
+}
+    @Override
     public ArrayList<Detail> findByForm(Form form) {
         return dao.findByForm(form);
     }

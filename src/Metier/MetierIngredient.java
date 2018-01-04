@@ -5,10 +5,12 @@
  */
 package  Metier;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import  Classes.Price;
 import  Classes.Category;
 import  Classes.Ingrediant;
+import Classes.UniteMesure;
 import  DAO.DAOIngredient;
 import  DAO.DAOPrice;
 
@@ -19,6 +21,13 @@ import  DAO.DAOPrice;
 public class MetierIngredient implements IMetierIngredient{
     DAOIngredient dao=new DAOIngredient();
     DAOPrice daoPrice=new DAOPrice();
+
+    public DAOIngredient getDao() {
+        return dao;
+    }
+    public UniteMesure StringToUniteMesure(String name){
+       return  dao.StringToUniteMesure(name);
+    }
     @Override
     public ArrayList<Ingrediant> findByCategory(Category category) {
         return dao.findByCategory(category);

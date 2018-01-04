@@ -5,10 +5,7 @@
  */
 package DBLinking;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +17,7 @@ public class BDDManager {
        host="localhost:3306";
        DBName="restaurantapp";
        DBUser="root";
-       DBPassword="root";
+       DBPassword="";
        PrepareConnextion(driver,host,DBName,DBUser,DBPassword); 
     }
     
@@ -41,7 +38,8 @@ public class BDDManager {
     }
     public PreparedStatement createStatement(String Query) {
         try {
-            return con.prepareStatement(Query);
+            return con.prepareStatement(Query, Statement.RETURN_GENERATED_KEYS);
+
         } catch (SQLException ex) {
             Logger.getLogger(BDDManager.class.getName()).log(Level.SEVERE, null, ex);
         }

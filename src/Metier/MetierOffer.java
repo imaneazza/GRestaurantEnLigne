@@ -1,5 +1,6 @@
 package  Metier;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import  Classes.Form;
 import  Classes.Offer;
@@ -33,7 +34,7 @@ public class MetierOffer implements IMetierOffer{
     public int delete(int id) {
         return dao.delete(id);
     }
-
+public int getlastID() throws SQLException {return dao.getlastID();}
     @Override
     public ArrayList<Offer> getAll() {
         return dao.getAll();

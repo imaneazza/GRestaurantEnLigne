@@ -19,4 +19,5 @@ public interface IDAOIngredient extends IDAO<Ingrediant> {
     public int addStock(Ingrediant ingredient,int quantity);
     public int consume(Ingrediant ingredient,int quantity);
     ArrayList<Price> getPrices(Ingrediant ingrediant);
+
 }

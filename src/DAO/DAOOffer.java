@@ -5,6 +5,7 @@
  */
 package  DAO;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,13 +34,13 @@ public class DAOOffer extends DAO implements IDAOOffer {
 
     @Override
     public int executeQuery(String query,Offer o){
-        statement = createStatement(query);
+        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
         try {
             statement.setString(1, o.getName());
             statement.setString(2, o.getImageSource());
             statement.setBoolean(3, o.getState());
             statement.setInt(4, o.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOOffer.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,24 +48,34 @@ public class DAOOffer extends DAO implements IDAOOffer {
     }
     @Override
     public int create(Offer o) {
-        return executeQuery("INSERT INTO Offer(nom,imageSource,state,id) Values(?,?,?,?);",o);
+        return executeQuery("INSERT INTO Offer(name,imageSource,state,id) Values(?,?,?,?);",o);
     }
 
     @Override
     public int update(Offer o) {
-        return executeQuery("UPDATE Offer SET nom=?,imageSource=?,state=? WHERE id=?;",o);
+        return executeQuery("UPDATE Offer SET name=?,imageSource=?,state=? WHERE id=?;",o);
     }
 
     @Override
     public int delete(int id) {
+
         statement = createStatement("DELETE FROM Offer WHERE id=?;");
         try {
+
             statement.setInt(1, id);
-            return statement.executeUpdate();
+     return  statement.executeUpdate();
+
+
         } catch (SQLException ex) {
             Logger.getLogger(DAOOffer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+    public int getlastID() throws SQLException {
+
+        ResultSet rs = statement.executeQuery("Select LAST_INSERT_ID() from Offer limit 1");
+        rs.next(); //para posicionar el puntero en la primer fila
+        return rs.getInt("LAST_INSERT_ID()");
     }
 
     @Override

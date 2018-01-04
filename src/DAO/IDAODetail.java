@@ -16,6 +16,7 @@ import Classes.Ingrediant;
  */
 public interface IDAODetail extends IDAO<Detail> {
     public ArrayList<Detail> findByForm(Form o);
+    public int delete(int id,int ing);
     public ArrayList<Detail> findByIngrediant(Ingrediant o);
 
 }

@@ -6,6 +6,9 @@
 package DBLinking;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 /**
  *
@@ -13,16 +16,31 @@ import java.sql.PreparedStatement;
  */
 public class DAO {
     protected PreparedStatement statement;
-    BDDManager manager=new BDDManager();
+    BDDManager manager = new BDDManager();
+
     public DAO() {
-        manager=new BDDManager();
+        manager = new BDDManager();
     }
-    public PreparedStatement createStatement(String Query){
+
+    public PreparedStatement createStatement(String Query) {
         return manager.createStatement(Query);
-                
+
     }
 
     public BDDManager getManager() {
         return manager;
+    }
+
+
+    public int executeToInt() {
+        try {
+             statement.executeUpdate();
+            ResultSet rs=statement.getGeneratedKeys();
+            if(rs.next())return rs.getInt(1);
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getErrorCode() + ex.getMessage());
+        }
+        return -1;
     }
 }

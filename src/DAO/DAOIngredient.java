@@ -5,8 +5,7 @@
  */
 package  DAO;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +39,8 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
             ArrayList<Ingrediant> list=new ArrayList<Ingrediant>();
             while (rs.next()) {
                 Ingrediant ingredient =ResultSetToObject(rs);
+                ArrayList<Price> liste=getPrices(ingredient);
+                ingredient.setArchivePrice(liste);
                 list.add(ingredient);
             }
             return list;
@@ -58,12 +59,17 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
             statement.setInt(3, o.getStock());
             statement.setInt(4, o.getCategoryId());
             statement.setInt(5, o.getId());
-            return statement.executeUpdate();
+            statement.executeUpdate();
+            ResultSet rs=statement.getGeneratedKeys();
+            if (rs.next())return rs.getInt(1);
+
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
+
+
 
     @Override
     public ArrayList<Ingrediant> findByCategory(Category category) {
@@ -79,12 +85,16 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
 
     @Override
     public int create(Ingrediant o) {
-       return executeQuery("INSERT INTO ingredient(nom,uniteMesure,stock,categoryId,id) Values(?,?,?,?,?);",o);
-    }
+
+        o.setId(executeQuery("INSERT INTO ingredient(name,uniteMesure,qte,categoryId,id) Values(?,?,?,?,?);",o));
+        return o.getId();
+
+
+}
 
     @Override
     public int update(Ingrediant o) {
-        return executeQuery("UPDATE ingredient SET nom=?,uniteMesure=?,stock=?,categoryId=? WHERE id=?;",o);
+        return executeQuery("UPDATE ingredient SET name=?,uniteMesure=?,qte=?,categoryId=? WHERE id=?;",o);
 
     }
 
@@ -93,7 +103,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         statement = createStatement("DELETE FROM ingredient WHERE id=?;");
         try {
             statement.setInt(1, id);
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -168,7 +178,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         try {
             statement.setInt(1, quantity);
             statement.setInt(2, ingredient.getId());
-            return statement.executeUpdate();
+            return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAOIngredient.class.getName()).log(Level.SEVERE, null, ex);
         }

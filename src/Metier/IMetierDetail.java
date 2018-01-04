@@ -16,5 +16,6 @@ import  Classes.Ingrediant;
  */
 public interface IMetierDetail extends IMetier<Detail> {
     public ArrayList<Detail> findByForm(Form form);
+    public int delete(int id,int ing);
     public ArrayList<Detail> findByIngredient(Ingrediant ingredient);
 }
