@@ -62,7 +62,8 @@ public class DAOUser extends DAO implements IDAOUser{
 
     @Override
     public int create(User o) {
-        return executeQuery("INSERT INTO user(fName,lName,login,password,roleId,id) Values(?,?,?,?,?,?);",o);
+        o.setId(executeQuery("INSERT INTO user(fName,lName,login,password,roleId,id) Values(?,?,?,?,?,?);",o));
+        return o.getId();
     }
 
     @Override

@@ -1,4 +1,5 @@
 /*
+/GRestaurantEnLigne.iml
 !/.gitignore
 !/src
-/src/DBLinking/*
+/src/DBLinking/BDDManager.java
