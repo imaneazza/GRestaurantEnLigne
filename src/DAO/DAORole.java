@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,17 +17,16 @@ import  DBLinking.DAO;
 public class DAORole extends DAO implements IDAORole{
     private String id = "id";
     private String name = "name";
-    private DAOUser daoUser=new DAOUser();
     public DAORole() {
         super();
     }
 
     @Override
     public int executeQuery(String query, Role o) {
-        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
+        statement = createStatement(query);
         try {
             statement.setString(1, o.getName());
-            statement.setInt(1, o.getId());
+            statement.setInt(2, o.getId());
             return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAORole.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,7 +63,7 @@ public class DAORole extends DAO implements IDAORole{
     public int delete(int id) {
         statement = createStatement("DELETE FROM role WHERE id=?;");
         try {
-            statement.setInt(3, id);
+            statement.setInt(1, id);
             return executeToInt();
         } catch (SQLException ex) {
             Logger.getLogger(DAORole.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +106,6 @@ public class DAORole extends DAO implements IDAORole{
 
     @Override
     public ArrayList<User> getUsers(Role role) {
-        System.out.println("Role "+role.getId());
-        return daoUser.findByRole(role);
+        return (new DAOUser()).findByRole(role);
     }
 }
