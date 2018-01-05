@@ -34,7 +34,7 @@ public class DAOOffer extends DAO implements IDAOOffer {
 
     @Override
     public int executeQuery(String query,Offer o){
-        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
+        statement = createStatement(query);
         try {
             statement.setString(1, o.getName());
             statement.setString(2, o.getImageSource());
@@ -48,7 +48,8 @@ public class DAOOffer extends DAO implements IDAOOffer {
     }
     @Override
     public int create(Offer o) {
-        return executeQuery("INSERT INTO Offer(name,imageSource,state,id) Values(?,?,?,?);",o);
+        o.setId(executeQuery("INSERT INTO Offer(name,imageSource,state,id) Values(?,?,?,?);",o));
+        return o.getId();
     }
 
     @Override
@@ -71,12 +72,7 @@ public class DAOOffer extends DAO implements IDAOOffer {
         }
         return 0;
     }
-    public int getlastID() throws SQLException {
 
-        ResultSet rs = statement.executeQuery("Select LAST_INSERT_ID() from Offer limit 1");
-        rs.next(); //para posicionar el puntero en la primer fila
-        return rs.getInt("LAST_INSERT_ID()");
-    }
 
     @Override
     public Offer find(int id) {

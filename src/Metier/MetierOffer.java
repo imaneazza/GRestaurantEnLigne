@@ -34,7 +34,6 @@ public class MetierOffer implements IMetierOffer{
     public int delete(int id) {
         return dao.delete(id);
     }
-public int getlastID() throws SQLException {return dao.getlastID();}
     @Override
     public ArrayList<Offer> getAll() {
         return dao.getAll();

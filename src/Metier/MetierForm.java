@@ -19,9 +19,6 @@ import  DAO.DAOForm;
  */
 public class MetierForm implements IMetierForm{
     DAOForm dao=new DAOForm();
-public int getlastID() throws SQLException {
-    return dao.getlastID();
-}
     @Override
     public ArrayList<Form> findByOffer(Offer Offer) {
         return dao.findByOffer(Offer);

@@ -33,7 +33,7 @@ public class DAOForm extends DAO implements IDAOForm{
     }
     @Override
     public int executeQuery(String query,Form o){
-        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
+        statement = createStatement(query);
         try {
            statement.setString(1, o.getName());
             statement.setInt(2, o.getId());
@@ -45,12 +45,7 @@ public class DAOForm extends DAO implements IDAOForm{
         }
         return 0;
     }
-    public int getlastID() throws SQLException {
 
-        ResultSet rs = statement.executeQuery("Select LAST_INSERT_ID() from form limit 1");
-        rs.next(); //para posicionar el puntero en la primer fila
-        return rs.getInt("LAST_INSERT_ID()");
-    }
     @Override
     public int create(Form o) {
         return executeQuery("INSERT INTO form(name,id,OfferId) Values(?,?,?);",o);
@@ -59,7 +54,8 @@ public class DAOForm extends DAO implements IDAOForm{
 
     @Override
     public int update(Form o) {
-        return executeQuery("UPDATE form SET nom=?,OfferId=? WHERE id=?;",o);
+        o.setId(executeQuery("UPDATE form SET name=?,OfferId=? WHERE id=?;",o));
+        return o.getId();
 
     }
 

@@ -24,7 +24,7 @@ public class DAODetail extends DAO implements IDAODetail {
     private String formId = "idForm";
     private String ingredientId = "idingredient";
     private String obligatory = "obligatory";
-    private String qteMin = "qteMin";
+    private String qteMin = "qteMix";
     private String qteMax = "qteMax";
     private DAOIngredient daoIngredient = new DAOIngredient();
 
@@ -34,7 +34,7 @@ public class DAODetail extends DAO implements IDAODetail {
 
     @Override
     public int executeQuery(String query, Detail o) {
-        statement = createStatement(query+"SELECT LAST_INSERT_ID();");
+        statement = createStatement(query);
         try {
             statement.setBoolean(1, o.getObligatory());
             statement.setInt(2, o.getMin());
@@ -66,12 +66,12 @@ public class DAODetail extends DAO implements IDAODetail {
 
     @Override
     public int create(Detail o) {
-        return  executeQuery("INSERT INTO detail(obligatory,qteMin,qteMax,idForm,idingredient) Values(?,?,?,?,?);",o);
+        return  executeQuery("INSERT INTO detail(obligatory,qteMix,qteMax,idForm,idingredient) Values(?,?,?,?,?);",o);
     }
 
     @Override
     public int update(Detail o) {
-        return  executeQuery("UPDATE detail SET obligatory=?,qteMin=?,qteMax=? WHERE formId=?,ingredientId=?;",o);
+        return  executeQuery("UPDATE detail SET obligatory=?,qteMix=?,qteMax=? WHERE idForm=? and idingredient=?;",o);
 
     }
 
@@ -98,17 +98,28 @@ public class DAODetail extends DAO implements IDAODetail {
         }
         return 0;
     }
-
+    public Detail find(int id , int ing ) {
+      try {
+            statement = createStatement("SELECT * FROM detail WHERE idForm=? and idingredient=?;");
+            statement.setInt(1, id);
+            statement.setInt(2,ing);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) return ResultSetToObject(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     @Override
-    public Detail find(int id) {
-        try {
+    public Detail find(int id ) {
+     /*   try {
             statement = createStatement("SELECT * FROM detail WHERE id=?;");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) return ResultSetToObject(rs);
         } catch (SQLException ex) {
             Logger.getLogger(DAODetail.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         return null;
     }
 
@@ -129,7 +140,6 @@ public class DAODetail extends DAO implements IDAODetail {
     @Override
     public ArrayList<Detail> findByForm(Form o) {
 
-        System.out.println(o.getId());
         return findByInt("SELECT * FROM detail WHERE idForm=?",o.getId());
 
     }
@@ -143,7 +153,7 @@ public class DAODetail extends DAO implements IDAODetail {
 
     public ArrayList<Detail> findByInt(String query, int value) {
         try {
-            statement = createStatement(query+"SELECT LAST_INSERT_ID();");
+            statement = createStatement(query);
             statement.setInt(1,value);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -46,8 +46,10 @@ public class MetierDetail implements IMetierDetail{
     public int update(Detail object) {
         return dao.update(object);
     }
-
-    @Override
+    public Detail find(int id , int ing ) {
+        return dao.find(id,ing);
+    }
+        @Override
     public int delete(int id) {
         return dao.delete(id);
     }
