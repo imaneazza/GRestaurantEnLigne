@@ -18,32 +18,6 @@ USE `restaurantapp`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Offer`
---
-
-DROP TABLE IF EXISTS `Offer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Offer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) NOT NULL,
-  `imageSource` varchar(40) NOT NULL,
-  `state` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Offer`
---
-
-LOCK TABLES `Offer` WRITE;
-/*!40000 ALTER TABLE `Offer` DISABLE KEYS */;
-INSERT INTO `Offer` VALUES (1,'Tajine','',0),(2,'Salade','',0),(3,'Soupe','',0),(4,'','',0);
-/*!40000 ALTER TABLE `Offer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `category`
 --
 
@@ -77,19 +51,13 @@ DROP TABLE IF EXISTS `client`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `client` (
   `code` int(11) NOT NULL AUTO_INCREMENT,
-  `fname` varchar(20) DEFAULT NULL,
-  `lname` varchar(20) DEFAULT NULL,
   `tel` varchar(10) DEFAULT NULL,
-  `mail` varchar(20) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `loyal` tinyint(1) DEFAULT NULL,
-  `login` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `roleId` int(11) NOT NULL,
+  `compteId` int(11) NOT NULL,
   PRIMARY KEY (`code`),
-  UNIQUE KEY `login_UNIQUE` (`login`),
-  KEY `fk_client_role_idx` (`roleId`),
-  CONSTRAINT `fk_client_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_client_role_idx` (`compteId`),
+  CONSTRAINT `fk_client_compte` FOREIGN KEY (`compteId`) REFERENCES `compte` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -160,6 +128,37 @@ LOCK TABLES `comment` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `compte`
+--
+
+DROP TABLE IF EXISTS `compte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `compte` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lName` varchar(40) NOT NULL,
+  `fName` varchar(40) NOT NULL,
+  `login` varchar(40) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `roleId` int(11) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_user_role_idx` (`roleId`),
+  CONSTRAINT `fk_user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `compte`
+--
+
+LOCK TABLES `compte` WRITE;
+/*!40000 ALTER TABLE `compte` DISABLE KEYS */;
+INSERT INTO `compte` VALUES (5,'koraichi','mossaab','mk','mkpass',4,NULL),(6,'AZZA','imane','ia','iapass',3,NULL),(7,'bouaziz','fatima ezzahr','fz','fzpass',2,NULL),(8,'el idrissi','ayoub','ae','aepass',1,NULL),(10,'knito2','teeeeeeeeeest','logo2','passo',1,NULL),(11,'testfinal','testfinal','testfinal','testfinal',1,NULL),(12,'testfinal','testfinal','testfinal','testfinal',1,NULL),(13,'testfinal','toto','testfinal','testfinal',1,NULL);
+/*!40000 ALTER TABLE `compte` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `detail`
 --
 
@@ -170,8 +169,8 @@ CREATE TABLE `detail` (
   `idForm` int(11) NOT NULL,
   `idingredient` int(11) NOT NULL,
   `obligatory` tinyint(1) NOT NULL,
+  `qteMin` decimal(10,0) DEFAULT '0',
   `qteMax` decimal(10,0) DEFAULT '0',
-  `qteMix` decimal(10,0) DEFAULT '0',
   KEY `fk_detail_ingrediant_idx` (`idingredient`),
   KEY `fk_detail_form` (`idForm`),
   CONSTRAINT `fk_detail_form` FOREIGN KEY (`idForm`) REFERENCES `form` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -185,7 +184,7 @@ CREATE TABLE `detail` (
 
 LOCK TABLES `detail` WRITE;
 /*!40000 ALTER TABLE `detail` DISABLE KEYS */;
-INSERT INTO `detail` VALUES (1,11,0,500,1000),(1,25,0,50,150),(2,11,0,250,500),(2,25,0,50,150),(1,22,0,250,1000),(2,22,0,250,1000);
+INSERT INTO `detail` VALUES (1,11,1,500,100000),(1,25,0,50,150),(2,11,1,250,100000),(2,25,0,50,150),(1,22,0,250,1000),(2,22,0,250,1000);
 /*!40000 ALTER TABLE `detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,10 +198,10 @@ DROP TABLE IF EXISTS `form`;
 CREATE TABLE `form` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
-  `OfferId` int(11) DEFAULT NULL,
+  `offerId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_form_offer_idx` (`OfferId`),
-  CONSTRAINT `fk_form_offer` FOREIGN KEY (`OfferId`) REFERENCES `Offer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fk_form_offer_idx` (`offerId`),
+  CONSTRAINT `fk_form_offer` FOREIGN KEY (`offerId`) REFERENCES `offer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -275,6 +274,32 @@ LOCK TABLES `line` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `offer`
+--
+
+DROP TABLE IF EXISTS `offer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `offer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) NOT NULL,
+  `imageSource` varchar(40) NOT NULL,
+  `state` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `offer`
+--
+
+LOCK TABLES `offer` WRITE;
+/*!40000 ALTER TABLE `offer` DISABLE KEYS */;
+INSERT INTO `offer` VALUES (1,'Tajine','',0),(2,'Salade','',0),(3,'Soupe','',0),(4,'','',0);
+/*!40000 ALTER TABLE `offer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `personalisation`
 --
 
@@ -340,7 +365,7 @@ CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,38 +374,13 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'web master'),(2,'chef cuisine'),(3,'chef stock');
+INSERT INTO `role` VALUES (1,'web master'),(2,'chef cuisine'),(3,'chef stock'),(4,'client');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Dumping events for database 'restaurantapp'
 --
-
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lName` varchar(40) NOT NULL,
-  `fName` varchar(40) NOT NULL,
-  `login` varchar(40) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `roleId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_user_role_idx` (`roleId`),
-  CONSTRAINT `fk_user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'restaurantapp'
@@ -401,10 +401,10 @@ RETURN NOT EXISTS(
     SELECT *
     FROM ingredient as i
 	inner join (
-		SELECT d.ingredientId as id,max(d.qteMax) as qteMax
+		SELECT d.idingredient as id,max(d.qteMax) as qteMax
 		FROM offer as o inner join form as f on o.id=f.offerId
-		inner join detail as d on f.id=d.formId
-		group by d.ingredientId
+		inner join detail as d on f.id=d.idform
+		group by d.idingredient
         ) as d on d.id=i.id and d.qteMax>i.qte
     );
 END ;;
@@ -423,4 +423,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-04 16:36:26
+-- Dump completed on 2018-01-05 11:03:58
