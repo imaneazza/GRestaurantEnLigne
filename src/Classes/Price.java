@@ -10,16 +10,16 @@
 public class Price {
     private int id;
     private Date date;
-    private float price;
+    private double price;
     private int ingredientId=-1;
     public Price() {
     }
-    public Price(int id,Date date,float price) {
+    public Price(int id,Date date,double price) {
         this.id=id;
         this.date=date;
         this.price=price;
     }
-    public Price(int id,Date date,float price,int ingredientId) {
+    public Price(int id,Date date,double price,int ingredientId) {
         this.id=id;
         this.date=date;
         this.price=price;
@@ -39,14 +39,14 @@ public class Price {
     /**
      * @return the price
      */
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
     /**
      * @param price the price to set
      */
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

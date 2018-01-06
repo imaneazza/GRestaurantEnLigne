@@ -50,7 +50,7 @@ public class DAOPrice extends DAO implements IDAOPrice{
             statement = createStatement(query);
             try {
                 statement.setDate(2, new java.sql.Date(o.getDate().getTime()));
-                statement.setFloat(1, o.getPrice());
+                statement.setDouble(1, o.getPrice());
                 statement.setFloat(3, o.getIngredientId());
                 statement.setFloat(4, o.getId());
                 return  executeToInt();
@@ -125,7 +125,7 @@ public class DAOPrice extends DAO implements IDAOPrice{
         @Override
         public Price ResultSetToObject(ResultSet rs) {
            try {
-                Price p = new Price(rs.getInt(id), rs.getDate(date), rs.getFloat(price),rs.getInt(ingredientId));
+                Price p = new Price(rs.getInt(id), rs.getDate(date), rs.getDouble(price),rs.getInt(ingredientId));
                 return p;
             } catch (SQLException ex) {
                 Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);
