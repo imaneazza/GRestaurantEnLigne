@@ -91,4 +91,9 @@ public class Role {
     public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
+
+    @Override
+    public String toString() {
+        return getId()+"- "+getName();
+    }
 }
