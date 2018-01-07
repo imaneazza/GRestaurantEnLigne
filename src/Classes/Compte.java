@@ -9,24 +9,26 @@ package Classes;
  *
  * @author mk
  */
-public class User {
+public class Compte {
     private int id;
     private String fName;
     private String lName;
     private String login;
     private String password;
+    private String email;
     private int roleId;
-    public User(int id, String fName, String lName, String login, String password,int roleId) {
+    public Compte(int id, String fName, String lName, String login, String password, String email, int roleId) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.login = login;
         this.password = password;
+        this.email = email;
         this.roleId=roleId;
     }
     
 
-    public User() {
+    public Compte() {
     }
 
     /**
@@ -106,5 +108,13 @@ public class User {
 
     public void setRoleId(int roleId) {
         this.roleId = roleId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
