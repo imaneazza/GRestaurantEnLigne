@@ -89,4 +89,9 @@ public class Line {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d\t%s\t%d",idCommande,form.getName(),quantity);
+    }
 }

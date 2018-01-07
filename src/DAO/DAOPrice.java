@@ -68,12 +68,13 @@ public class DAOPrice extends DAO implements IDAOPrice{
 
     @Override
     public int update(Price o) {
-        return executeQuery("UPDATE price SET price=?,date=?,ingredientId=? WHERE id=?;",o);
+
+            return executeQuery(String.format("UPDATE price SET %s=?,%s=?,%s=? WHERE %s=?;",price,date,ingredientId,id),o);
     }
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM price WHERE id=?;");
+        statement = createStatement(String.format("DELETE FROM price WHERE %s=?;",this.id));
         try {
             statement.setInt(1, id);
             return executeToInt();
@@ -84,7 +85,7 @@ public class DAOPrice extends DAO implements IDAOPrice{
     }
         @Override
         public int create(Price o) {
-            o.setId(executeQuery("INSERT INTO price (`price`,`date`,`ingredientId`,`id`)VALUES(?,?,?,?)",o));
+            o.setId(executeQuery(String.format("INSERT INTO price (%s,%s,%s,%s)VALUES(?,?,?,?)",price,date,ingredientId,id),o));
             return o.getId();
 
 
@@ -94,7 +95,7 @@ public class DAOPrice extends DAO implements IDAOPrice{
         @Override
         public Price find(int id) {
             try {
-                statement = createStatement("SELECT * FROM price WHERE id=?;");
+                statement = createStatement(String.format("SELECT * FROM price WHERE %s=?;",this.id));
                 statement.setInt(1, id);
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()) {
@@ -114,7 +115,7 @@ public class DAOPrice extends DAO implements IDAOPrice{
         @Override
         public ArrayList<Price> findByIngrediant(Ingrediant ingrediant) {
             try {
-                statement = createStatement("SELECT * FROM price WHERE ingredientId=?;");
+                statement = createStatement(String.format("SELECT * FROM price WHERE %s=?;",ingredientId));
                 statement.setInt(1, ingrediant.getId());
             } catch (SQLException ex) {
                 Logger.getLogger(DAOPrice.class.getName()).log(Level.SEVERE, null, ex);

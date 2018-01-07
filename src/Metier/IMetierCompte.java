@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package  Metier;
 
 import java.util.ArrayList;
 import  Classes.Role;
@@ -13,6 +13,7 @@ import Classes.Compte;
  *
  * @author inknown
  */
-public interface IDAORole extends IDAO<Role>{
-    public ArrayList<Compte> getComptes(Role role);
+public interface IMetierCompte extends IMetier<Compte> {
+    public Compte connect(String login, String password);
+    public ArrayList<Compte> findByRole(Role role);
 }

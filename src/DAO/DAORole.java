@@ -2,12 +2,11 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import  Classes.Role;
-import Classes.User;
+import Classes.Compte;
 import  DBLinking.DAO;
 
 /**
@@ -96,7 +95,7 @@ public class DAORole extends DAO implements IDAORole{
     public Role ResultSetToObject(ResultSet rs) {
         try {
             Role o = new Role(rs.getInt(1), rs.getString(2));
-            o.setUsers(getUsers(o));
+            o.setComptes(getComptes(o));
             return o;
         } catch (SQLException ex) {
             Logger.getLogger(DAORole.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,7 +104,7 @@ public class DAORole extends DAO implements IDAORole{
     }
 
     @Override
-    public ArrayList<User> getUsers(Role role) {
-        return (new DAOUser()).findByRole(role);
+    public ArrayList<Compte> getComptes(Role role) {
+        return (new DAOCompte()).findByRole(role);
     }
 }

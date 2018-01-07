@@ -3,41 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package  Metier;
+package Metier;
+
+import Classes.Commande;
+import Classes.Line;
+import DAO.DAOCommande;
 
 import java.util.ArrayList;
-import  Classes.Role;
-import  Classes.User;
-import  DAO.DAOUser;
 
 /**
  *
- * @author mk
+ * @author inknown
  */
-public class MetierUser implements IMetierUser{
-    DAOUser dao=new DAOUser();
+public class MetierCommande implements IMetierCommande{
+    private DAOCommande dao=new DAOCommande();
+
     @Override
-    public User connect(String login, String password) {
-        return dao.connect(login, password);
+    public ArrayList<Line> getLines(Commande cmd) {
+        return dao.getLines(cmd);
     }
 
     @Override
-    public ArrayList<User> findByRole(Role role) {
-        return dao.findByRole(role);
-    }
-
-    @Override
-    public User find(int id) {
+    public Commande find(int id) {
         return dao.find(id);
     }
 
     @Override
-    public int create(User object) {
+    public int create(Commande object) {
         return dao.create(object);
     }
 
     @Override
-    public int update(User object) {
+    public int update(Commande object) {
         return dao.update(object);
     }
 
@@ -47,8 +44,7 @@ public class MetierUser implements IMetierUser{
     }
 
     @Override
-    public ArrayList<User> getAll() {
+    public ArrayList<Commande> getAll() {
         return dao.getAll();
     }
-    
 }

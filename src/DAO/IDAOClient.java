@@ -5,17 +5,17 @@
  */
 package DAO;
 
-import java.util.ArrayList;
-import  Classes.Role;
-import  Classes.User;
+import Classes.Client;
+import Classes.Compte;
+import Classes.Role;
 
+import java.util.ArrayList;
 
 
 /**
  *
  * @author inknown
  */
-public interface IDAOUser extends IDAO<User>{
-    public User connect(String login,String password);
-    public ArrayList<User> findByRole(Role role);
+public interface IDAOClient extends IDAO<Client>{
+    ArrayList<Client> findByCompte(Compte compte);
 }

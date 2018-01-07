@@ -9,10 +9,13 @@ import java.util.ArrayList;
 import  Classes.Role;
 import Classes.Compte;
 
+
+
 /**
  *
  * @author inknown
  */
-public interface IDAORole extends IDAO<Role>{
-    public ArrayList<Compte> getComptes(Role role);
+public interface IDAOCompte extends IDAO<Compte>{
+    public Compte connect(String login, String password);
+    public ArrayList<Compte> findByRole(Role role);
 }

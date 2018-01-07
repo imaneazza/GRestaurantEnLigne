@@ -18,18 +18,18 @@ public class DAOPersonnalization  extends DAO implements IDAOPersonnalization {
     private String qte="qte";
     @Override
     public int create(Personalization object) {
-        return executeQuery("INSERT INTO personalisation(qte,lineId, ingredientId) VALUES (?,?,?);",object);
+        return executeQuery(String.format("INSERT INTO personalisation(%s,%s, %s) VALUES (?,?,?);",qte,lineid,ingredientid),object);
 
     }
 
     @Override
     public int update(Personalization object) {
-        return executeQuery("UPDATE personalisation SET qte=?  WHERE lineId=? and ingredientId=?;",object);
+        return executeQuery(String.format("UPDATE personalisation SET %s=?  WHERE %s=? and %s=?;",qte,lineid,ingredientid),object);
 
     }
     @Override
     public int deletebyLine(Line line) {
-        statement = createStatement("DELETE FROM personalisation WHERE lineId=?;");
+        statement = createStatement(String.format("DELETE FROM personalisation WHERE %s=?;",lineid));
         try {
             statement.setInt(1, line.getIdLine());
             return executeToInt();
@@ -116,7 +116,7 @@ public class DAOPersonnalization  extends DAO implements IDAOPersonnalization {
     @Override
     public ArrayList<Personalization> findByLine(Line line) {
         try {
-            statement = createStatement("SELECT * FROM personalisation WHERE lineId=? ");
+            statement = createStatement(String.format("SELECT * FROM personalisation WHERE %s=? ",lineid));
             statement.setInt(1,line.getIdLine());
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -132,7 +132,7 @@ public class DAOPersonnalization  extends DAO implements IDAOPersonnalization {
     @Override
     public Personalization findByLineIngredient(Ingrediant ing, Line line) {
         try {
-            statement = createStatement("SELECT * FROM personalisation WHERE lineId=? and ingredientId=?");
+            statement = createStatement(String.format("SELECT * FROM personalisation WHERE %s=? and %s=?",lineid,ingredientid));
             statement.setInt(1, line.getIdLine());
             statement.setInt(2, ing.getId());
             ResultSet rs = statement.executeQuery();

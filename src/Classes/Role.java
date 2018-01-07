@@ -15,18 +15,18 @@ public class Role {
 
     private int id;
     private String name;
-    private ArrayList<User> users;
+    private ArrayList<Compte> comptes;
 
     public Role(int id, String name) {
         this.id = id;
         this.name = name;
-        this.users = new ArrayList<User>();
+        this.comptes = new ArrayList<Compte>();
     }
 
-    public Role(int id, String name, ArrayList<User> users) {
+    public Role(int id, String name, ArrayList<Compte> comptes) {
         this.id = id;
         this.name = name;
-        this.users = users;
+        this.comptes = comptes;
     }
 
     public Role() {
@@ -60,23 +60,23 @@ public class Role {
         this.name = name;
     }
 
-    public void addUser(User user) {
-        users.add(user);
+    public void addUser(Compte compte) {
+        comptes.add(compte);
     }
 
-    public void removeUser(User user) {
-        users.remove(user);
+    public void removeUser(Compte compte) {
+        comptes.remove(compte);
     }
 
     public void removeUser(int id) {
-        User u = findUser(id);
+        Compte u = findUser(id);
         if (u != null) {
-            users.remove(u);
+            comptes.remove(u);
         }
     }
 
-    public User findUser(int id) {
-        for (User u : users) {
+    public Compte findUser(int id) {
+        for (Compte u : comptes) {
             if (u.getId() == id) {
                 return u;
             }
@@ -84,12 +84,12 @@ public class Role {
         return null;
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
+    public ArrayList<Compte> getComptes() {
+        return comptes;
     }
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
+    public void setComptes(ArrayList<Compte> comptes) {
+        this.comptes = comptes;
     }
 
     @Override

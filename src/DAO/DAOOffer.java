@@ -48,19 +48,19 @@ public class DAOOffer extends DAO implements IDAOOffer {
     }
     @Override
     public int create(Offer o) {
-        o.setId(executeQuery("INSERT INTO Offer(name,imageSource,state,id) Values(?,?,?,?);",o));
+        o.setId(executeQuery(String.format("INSERT INTO Offer(%s,%s,%s,%s) Values(?,?,?,?);",name,imageSource,state,id),o));
         return o.getId();
     }
 
     @Override
     public int update(Offer o) {
-        return executeQuery("UPDATE Offer SET name=?,imageSource=?,state=? WHERE id=?;",o);
+        return executeQuery(String.format("UPDATE Offer SET %s=?,%s=?,%s=? WHERE %s=?;",name,imageSource,state,id),o);
     }
 
     @Override
     public int delete(int id) {
 
-        statement = createStatement("DELETE FROM Offer WHERE id=?;");
+        statement = createStatement(String.format("DELETE FROM Offer WHERE %s=?;",this.id));
         try {
 
             statement.setInt(1, id);
@@ -77,7 +77,7 @@ public class DAOOffer extends DAO implements IDAOOffer {
     @Override
     public Offer find(int id) {
         try {
-            statement = createStatement("SELECT * FROM Offer WHERE id=?;");
+            statement = createStatement(String.format("SELECT * FROM Offer WHERE %s=?;",this.id));
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {

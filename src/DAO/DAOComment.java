@@ -18,19 +18,19 @@ public class DAOComment extends DAO implements IDAOComment{
 
     @Override
     public int create(Comment object) {
-        object.setId(executeQuery("INSERT INTO comment( commandeId, lineId, content ,id) VALUES(?,?,?,?);",object));
+        object.setId(executeQuery(String.format("INSERT INTO comment( %s, %s, %s ,%s) VALUES(?,?,?,?);",commandeId,lineId,content,idComment),object));
         return object.getId();
     }
 
     @Override
     public int update(Comment object) {
-        return executeQuery("UPDATE comment SET commandeId=? ,lineId=?,content=? WHERE id=?",object);
+        return executeQuery(String.format("UPDATE comment SET %s=? ,%s=?,%s=? WHERE %s=?",commandeId,lineId,content,idComment),object);
 
     }
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM comment WHERE id=?;");
+        statement = createStatement(String.format("DELETE FROM comment WHERE %s=?;",idComment));
         try {
             statement.setInt(1, id);
             return executeToInt();
@@ -43,7 +43,7 @@ public class DAOComment extends DAO implements IDAOComment{
     @Override
     public Comment find(int id) {
         try {
-            statement = createStatement("SELECT * FROM comment WHERE id=?");
+            statement = createStatement(String.format("SELECT * FROM comment WHERE %s=?",idComment));
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -108,7 +108,7 @@ public class DAOComment extends DAO implements IDAOComment{
 
     @Override
     public ArrayList<Comment> findbyCommande(Commande cmd) {
-        return findByInt("SELECT * FROM comment WHERE commandeId =?",cmd.getId());
+        return findByInt(String.format("SELECT * FROM comment WHERE %s =?",commandeId),cmd.getId());
 
     }
     public ArrayList<Comment> findByInt(String query, int value) {

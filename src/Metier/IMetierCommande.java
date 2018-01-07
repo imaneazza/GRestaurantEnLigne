@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package  Metier;
+package Metier;
+
+import Classes.Commande;
+import Classes.Line;
 
 import java.util.ArrayList;
-import  Classes.Role;
-import  Classes.User;
 
 /**
  *
  * @author inknown
  */
-public interface IMetierUser extends IMetier<User> {
-    public User connect(String login,String password);
-    public ArrayList<User> findByRole(Role role);
+public interface IMetierCommande extends IMetier<Commande>{
+    ArrayList<Line> getLines(Commande commande);
 }

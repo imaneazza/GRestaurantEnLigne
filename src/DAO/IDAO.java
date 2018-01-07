@@ -5,6 +5,9 @@
  */
 package  DAO;
 
+import Classes.PaimentMode;
+import Classes.UniteMesure;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,12 +17,12 @@ import java.util.HashMap;
  * @author inknown
  */
 public interface IDAO<T> {
-    public int create(T object);
-    public int update(T object);
-    public int delete(int id);
-    public T find(int id);
-    public ArrayList<T> getAll();
-    public T ResultSetToObject(ResultSet rs);
-    public int executeQuery(String query,T o);
-    public ArrayList<T> executeToArray();
+    int create(T object);
+    int update(T object);
+    int delete(int id);
+    T find(int id);
+    ArrayList<T> getAll();
+    T ResultSetToObject(ResultSet rs);
+    int executeQuery(String query,T o);
+    ArrayList<T> executeToArray();
 }

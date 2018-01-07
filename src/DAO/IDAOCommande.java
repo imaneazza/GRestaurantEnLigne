@@ -5,14 +5,16 @@
  */
 package DAO;
 
+import Classes.Commande;
+import Classes.Line;
+
 import java.util.ArrayList;
-import  Classes.Role;
-import Classes.Compte;
+
 
 /**
  *
  * @author inknown
  */
-public interface IDAORole extends IDAO<Role>{
-    public ArrayList<Compte> getComptes(Role role);
+public interface IDAOCommande extends IDAO<Commande>{
+    ArrayList<Line> getLines(Commande commande);
 }

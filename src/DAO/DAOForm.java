@@ -36,8 +36,8 @@ public class DAOForm extends DAO implements IDAOForm{
         statement = createStatement(query);
         try {
            statement.setString(1, o.getName());
-            statement.setInt(2, o.getId());
-            statement.setInt(3, o.getOfferId());
+            statement.setInt(3, o.getId());
+            statement.setInt(2, o.getOfferId());
 
             return executeToInt();
         } catch (SQLException ex) {
@@ -48,20 +48,20 @@ public class DAOForm extends DAO implements IDAOForm{
 
     @Override
     public int create(Form o) {
-        return executeQuery("INSERT INTO form(name,id,OfferId) Values(?,?,?);",o);
+        return executeQuery(String.format("INSERT INTO form(%s,%s,%s) Values(?,?,?);",name,idOffer,id),o);
 
     }
 
     @Override
     public int update(Form o) {
-        o.setId(executeQuery("UPDATE form SET name=?,OfferId=? WHERE id=?;",o));
+        o.setId(executeQuery(String.format("UPDATE form SET %s=?,%s=? WHERE %s=?;",name,idOffer,id),o));
         return o.getId();
 
     }
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM form WHERE id=?;");
+        statement = createStatement(String.format("DELETE FROM form WHERE %s=?;",this.id));
         try {
             statement.setInt(1, id);
 
@@ -76,7 +76,7 @@ public class DAOForm extends DAO implements IDAOForm{
     @Override
     public Form find(int id) {
         try {
-            statement = createStatement("SELECT * FROM form WHERE id=?;");
+            statement = createStatement(String.format("SELECT * FROM form WHERE %s=?;",this.id));
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -116,7 +116,7 @@ public class DAOForm extends DAO implements IDAOForm{
     @Override
     public ArrayList<Form> findByOffer(Offer Offer) {
         try {
-            statement = createStatement("SELECT * FROM form WHERE OfferId=?;");
+            statement = createStatement(String.format("SELECT * FROM form WHERE %s=?;",idOffer));
             statement.setInt(1,Offer.getId());
         } catch (SQLException e) {
             e.printStackTrace();

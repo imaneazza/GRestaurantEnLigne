@@ -23,7 +23,7 @@ public class DAOLine extends DAO implements IDAOLine  {
 
     @Override
     public ArrayList<Line> findbyCommande(Commande cmd) {
-        return findByInt("SELECT * FROM line WHERE commandeId =?",cmd.getId());
+        return findByInt(String.format("SELECT * FROM line WHERE %s =?",commandeId),cmd.getId());
 
     }
 
@@ -42,7 +42,7 @@ public class DAOLine extends DAO implements IDAOLine  {
     @Override
     public Line findbyCommandeForm(Commande cmd, Form form) {
         try {
-            statement = createStatement("SELECT * FROM line WHERE commandeId=? and formId=?");
+            statement = createStatement(String.format("SELECT * FROM line WHERE %s=? and %s=?",commandeId,formID));
             statement.setInt(1, cmd.getId());
             statement.setInt(2, form.getId());
             ResultSet rs = statement.executeQuery();
@@ -57,19 +57,19 @@ public class DAOLine extends DAO implements IDAOLine  {
 
     @Override
     public int create(Line object) {
-        object.setIdLine(executeQuery("INSERT INTO line( qte, formId, commandeId ,id) VALUES (?,?,?,?);",object));
+        object.setIdLine(executeQuery(String.format("INSERT INTO line( %s,%s,%s,%s) VALUES (?,?,?,?);",qte,formID,commandeId,idLine),object));
         return object.getIdLine();
     }
 
     @Override
     public int update(Line object) {
-        return executeQuery("UPDATE line SET qte=? , formId=? , commandeId=? WHERE id=?;",object);
+        return executeQuery(String.format("UPDATE line SET %s=? , %s=? , %s=? WHERE %s=?;",qte,formID,commandeId,idLine),object);
 
     }
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM line WHERE id=?;");
+        statement = createStatement(String.format("DELETE FROM line WHERE %s=?;",idLine));
         try {
             statement.setInt(1, id);
             return executeToInt();
