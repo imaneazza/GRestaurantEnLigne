@@ -70,4 +70,9 @@ public class Personalization {
     public void setQte(double qte) {
         this.qte = qte;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d\t%s\t%f",idLine,ing.getName(),qte);
+    }
 }
