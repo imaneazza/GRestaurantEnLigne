@@ -70,7 +70,9 @@ public class Personalization {
     public void setQte(double qte) {
         this.qte = qte;
     }
-
+    public double getTotal() {
+        return ing.getCurrentPrice().getPrice()*qte;
+    }
     @Override
     public String toString() {
         return String.format("%d\t%s\t%f",idLine,ing.getName(),qte);
