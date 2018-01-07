@@ -77,6 +77,7 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public int update(Category o) {
+
         return  executeQuery("UPDATE category SET name=?,imageSource=? WHERE id=?;",o);
     }
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/GRestaurantEnLigne.iml" filepath="$PROJECT_DIR$/.idea/GRestaurantEnLigne.iml" />
       <module fileurl="file://$PROJECT_DIR$/GRestaurantEnLigne.iml" filepath="$PROJECT_DIR$/GRestaurantEnLigne.iml" />
       <module fileurl="file://$PROJECT_DIR$/SQL_FX_Module/SQL_FX_Module.iml" filepath="$PROJECT_DIR$/SQL_FX_Module/SQL_FX_Module.iml" />
     </modules>
