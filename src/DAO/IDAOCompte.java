@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package  Metier;
+package DAO;
 
 import java.util.ArrayList;
 import  Classes.Role;
-import  Classes.User;
+import Classes.Compte;
+
+
 
 /**
  *
  * @author inknown
  */
-public interface IMetierUser extends IMetier<User> {
-    public User connect(String login,String password);
-    public ArrayList<User> findByRole(Role role);
+public interface IDAOCompte extends IDAO<Compte>{
+    public Compte connect(String login, String password);
+    public ArrayList<Compte> findByRole(Role role);
 }

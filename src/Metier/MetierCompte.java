@@ -7,37 +7,37 @@ package  Metier;
 
 import java.util.ArrayList;
 import  Classes.Role;
-import  Classes.User;
-import  DAO.DAOUser;
+import Classes.Compte;
+import  DAO.DAOCompte;
 
 /**
  *
  * @author mk
  */
-public class MetierUser implements IMetierUser{
-    DAOUser dao=new DAOUser();
+public class MetierCompte implements IMetierCompte{
+    DAOCompte dao=new DAOCompte();
     @Override
-    public User connect(String login, String password) {
+    public Compte connect(String login, String password) {
         return dao.connect(login, password);
     }
 
     @Override
-    public ArrayList<User> findByRole(Role role) {
+    public ArrayList<Compte> findByRole(Role role) {
         return dao.findByRole(role);
     }
 
     @Override
-    public User find(int id) {
+    public Compte find(int id) {
         return dao.find(id);
     }
 
     @Override
-    public int create(User object) {
+    public int create(Compte object) {
         return dao.create(object);
     }
 
     @Override
-    public int update(User object) {
+    public int update(Compte object) {
         return dao.update(object);
     }
 
@@ -47,7 +47,7 @@ public class MetierUser implements IMetierUser{
     }
 
     @Override
-    public ArrayList<User> getAll() {
+    public ArrayList<Compte> getAll() {
         return dao.getAll();
     }
     
