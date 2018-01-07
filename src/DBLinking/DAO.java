@@ -5,6 +5,9 @@
  */
 package DBLinking;
 
+import Classes.PaimentMode;
+import Classes.UniteMesure;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,5 +45,35 @@ public class DAO {
             System.out.println(ex.getErrorCode() + ex.getMessage());
         }
         return -1;
+    }
+    public UniteMesure StringToUniteMesure(String uniteMesure) {
+        switch (uniteMesure) {
+            case "ml":
+                return UniteMesure.ml;
+            case "cl":
+                return UniteMesure.cl;
+            case "litres":
+                return UniteMesure.litres;
+            case "mg":
+                return UniteMesure.mg;
+            case "cg":
+                return UniteMesure.cg;
+            case "g":
+                return UniteMesure.g;
+            case "kg":
+                return UniteMesure.kg;
+            default:
+                return UniteMesure.autre;
+        }
+    }
+    public PaimentMode StringToPaimentMode(String paimentMode) {
+        switch (paimentMode) {
+            case "ONLINE":
+                return PaimentMode.onligne;
+            case "DELIVERING":
+                return PaimentMode.livraison;
+            default:
+                return PaimentMode.autre;
+        }
     }
 }

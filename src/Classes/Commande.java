@@ -6,7 +6,7 @@ public class Commande {
     private int id;
     private Date date;
     private String address;
-    private PaiementMode mode;
+    private PaimentMode mode;
     private Client client;
     private ArrayList<Line> lines=new ArrayList<Line>();
 
@@ -17,21 +17,21 @@ public class Commande {
         this.id = id;
         this.date = date;
         this.address = address;
-        this.mode=PaiementMode.ONLINE;
+        this.mode=PaimentMode.onligne;
     }
 
-    public Commande(int id, Date date, String address, PaiementMode mode, Client client) {
+    public Commande(int id, Date date, String address, PaimentMode mode, Client client) {
         this.id = id;
         this.date = date;
         this.address = address;
-        this.mode=client.isLoyal()?mode:PaiementMode.ONLINE;
+        this.mode=client.isLoyal()?mode:PaimentMode.onligne;
         this.client = client;
     }
-    public Commande(int id, Date date, String address, PaiementMode mode, Client client,ArrayList<Line> lines) {
+    public Commande(int id, Date date, String address, PaimentMode mode, Client client,ArrayList<Line> lines) {
         this.id = id;
         this.date = date;
         this.address = address;
-        this.mode=client.isLoyal()?mode:PaiementMode.ONLINE;
+        this.mode=client.isLoyal()?mode:PaimentMode.onligne;
         this.client = client;
         this.lines.addAll(lines);
     }
@@ -75,11 +75,11 @@ public class Commande {
         this.address = address;
     }
 
-    public PaiementMode getMode() {
+    public PaimentMode getMode() {
         return mode;
     }
 
-    public void setMode(PaiementMode mode) {
+    public void setMode(PaimentMode mode) {
         this.mode = mode;
     }
 

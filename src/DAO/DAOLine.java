@@ -23,7 +23,7 @@ public class DAOLine extends DAO implements IDAOLine  {
 
     @Override
     public ArrayList<Line> findbyCommande(Commande cmd) {
-        return findByInt("SELECT * FROM line WHERE commandeId =?",cmd.getId());
+        return findByInt(String.format("SELECT * FROM line WHERE %s =?",commandeId),cmd.getId());
 
     }
 

@@ -150,26 +150,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
         return null;
     }
 
-    public UniteMesure StringToUniteMesure(String uniteMesure) {
-        switch (uniteMesure) {
-            case "ml":
-                return UniteMesure.ml;
-            case "cl":
-                return UniteMesure.cl;
-            case "litres":
-                return UniteMesure.litres;
-            case "mg":
-                return UniteMesure.mg;
-            case "cg":
-                return UniteMesure.cg;
-            case "g":
-                return UniteMesure.g;
-            case "kg":
-                return UniteMesure.kg;
-            default:
-                return UniteMesure.autre;
-        }
-    }
+
 
 
     @Override
