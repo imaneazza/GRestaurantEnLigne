@@ -14,13 +14,13 @@ public class Detail {
     private Ingrediant ingredient = null;
     private int formId;
     private boolean isObligatory = false;
-    private int max = 0;
-    private int min = 0;
+    private double max = 0;
+    private double min = 0;
 
     public Detail() {
     }
 
-    public Detail(int formId, Ingrediant ingredient, boolean isObligatory, int min, int max) {
+    public Detail(int formId, Ingrediant ingredient, boolean isObligatory, double min, double max) {
         this.formId=formId;
         this.ingredient = ingredient;
         this.isObligatory = isObligatory;
@@ -32,14 +32,14 @@ public class Detail {
             this.min = max;
         }
     }
-    public Detail(int form, Ingrediant ingredient,int quantity) {
+    public Detail(double form, Ingrediant ingredient,double quantity) {
         this.formId=formId;
         this.ingredient = ingredient;
         this.isObligatory = true;
         this.max = quantity;
         this.min = quantity;
     }
-    public Detail(Form form, Ingrediant ingredient, boolean isObligatory, int min, int max) {
+    public Detail(Form form, Ingrediant ingredient, boolean isObligatory, double min, double max) {
         this.formId=form.getId();
         this.ingredient = ingredient;
         this.isObligatory = isObligatory;
@@ -51,7 +51,7 @@ public class Detail {
             this.min = max;
         }
     }
-    public Detail(Form form, Ingrediant ingredient,int quantity) {
+    public Detail(Form form, Ingrediant ingredient,double quantity) {
         this.formId=form.getId();
         this.ingredient = ingredient;
         this.isObligatory = true;
@@ -91,28 +91,28 @@ public class Detail {
     /**
      * @return the max
      */
-    public int getMax() {
+    public double getMax() {
         return max;
     }
 
     /**
      * @param max the max to set
      */
-    public void setMax(int max) {
+    public void setMax(double max) {
         this.max = max;
     }
 
     /**
      * @return the min
      */
-    public int getMin() {
+    public double getMin() {
         return min;
     }
 
     /**
      * @param min the min to set
      */
-    public void setMin(int min) {
+    public void setMin(double min) {
         this.min = min;
     }
 

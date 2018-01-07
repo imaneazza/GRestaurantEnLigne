@@ -24,7 +24,7 @@ public class DAODetail extends DAO implements IDAODetail {
     private String formId = "idForm";
     private String ingredientId = "idingredient";
     private String obligatory = "obligatory";
-    private String qteMin = "qteMix";
+    private String qteMin = "qteMin";
     private String qteMax = "qteMax";
     private DAOIngredient daoIngredient = new DAOIngredient();
 
@@ -37,8 +37,8 @@ public class DAODetail extends DAO implements IDAODetail {
         statement = createStatement(query);
         try {
             statement.setBoolean(1, o.getObligatory());
-            statement.setInt(2, o.getMin());
-            statement.setInt(3, o.getMax());
+            statement.setDouble(2, o.getMin());
+            statement.setDouble(3, o.getMax());
             statement.setInt(4, o.getFormId());
             statement.setInt(5, o.getIngredient().getId());
             return executeToInt();
