@@ -74,7 +74,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     @Override
     public ArrayList<Ingrediant> findByCategory(Category category) {
         try {
-            statement = createStatement("SELECT * FROM ingredient WHERE categoryId=?;");
+            statement = createStatement(String.format("SELECT * FROM ingredient WHERE %s=?;",categoryId));
             statement.setInt(1, category.getId());
 
         } catch (SQLException ex) {
@@ -86,7 +86,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     @Override
     public int create(Ingrediant o) {
 
-        o.setId(executeQuery("INSERT INTO ingredient(name,uniteMesure,qte,categoryId,id) Values(?,?,?,?,?);",o));
+        o.setId(executeQuery(String.format("INSERT INTO ingredient(%s,%s,%s,%s,%s) Values(?,?,?,?,?);",name,uniteMesure,stock,categoryId,id),o));
         return o.getId();
 
 
@@ -94,13 +94,13 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
 
     @Override
     public int update(Ingrediant o) {
-        return executeQuery("UPDATE ingredient SET name=?,uniteMesure=?,qte=?,categoryId=? WHERE id=?;",o);
+        return executeQuery(String.format("UPDATE ingredient SET %s=?,%s=?,%s=?,%s=? WHERE %s=?;",name,uniteMesure,stock,categoryId,id),o);
 
     }
 
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM ingredient WHERE id=?;");
+        statement = createStatement(String.format("DELETE FROM ingredient WHERE %s=?;",id));
         try {
             statement.setInt(1, id);
             return executeToInt();
@@ -113,7 +113,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     @Override
     public Ingrediant find(int id) {
         try {
-            statement = createStatement("SELECT * FROM ingredient WHERE id=?;");
+            statement = createStatement(String.format("SELECT * FROM ingredient WHERE %s=?;",id));
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -127,7 +127,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
 
     @Override
     public ArrayList<Ingrediant> getAll() {
-            statement = createStatement("SELECT * FROM ingredient");
+            statement = createStatement("SELECT * FROM ingredient;");
             return executeToArray();
     }
 
@@ -155,7 +155,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
 
     @Override
     public int addStock(Ingrediant ingredient,int quantity) {
-        statement = createStatement("UPDATE ingredient SET stock=stock+? id=?;");
+        statement = createStatement(String.format("UPDATE ingredient SET %s=%s+? %s=?;",stock,stock,id));
         try {
             statement.setInt(1, quantity);
             statement.setInt(2, ingredient.getId());

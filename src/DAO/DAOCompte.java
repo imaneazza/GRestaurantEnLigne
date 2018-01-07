@@ -63,20 +63,18 @@ public class DAOCompte extends DAO implements IDAOCompte{
 
     @Override
     public int create(Compte o) {
-        o.setId(executeQuery(String.format("INSERT INTO compte(%s,%s,%s,%s,%s,%s,%s) Values(?,?,?,?,?,?);",fName,lName,login,password,email,roleId,id)
-                ,o));
+        o.setId(executeQuery("INSERT INTO compte(fName,lName,login,password,email,roleId,id) Values(?,?,?,?,?,?);",o));
         return o.getId();
     }
 
     @Override
     public int update(Compte o) {
-        return executeQuery(String.format( "UPDATE compte SET %s=?,%s=?,%s=?,%s=?,%s=?,%s=? WHERE %s=?;" ,fName,lName,login,password,email,roleId,id)
-               ,o);
+        return executeQuery("UPDATE compte SET fName=?,lName=?,login=?,password=?,email=?,roleId=? WHERE id=?;",o);
     }
 
     @Override
     public int delete(int id) {
-        statement = createStatement(String.format("DELETE FROM compte WHERE %s=?;",this.id));
+        statement = createStatement("DELETE FROM compte WHERE id=?;");
         try {
             statement.setInt(1, id);
             return executeToInt();
@@ -89,7 +87,7 @@ public class DAOCompte extends DAO implements IDAOCompte{
     @Override
     public Compte find(int id) {
         try {
-            statement = createStatement(String.format("SELECT * FROM compte WHERE %s=?;",this.id));
+            statement = createStatement("SELECT * FROM compte WHERE id=?;");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -120,7 +118,7 @@ public class DAOCompte extends DAO implements IDAOCompte{
     @Override
     public Compte connect(String login, String password) {
         try {
-            statement = createStatement(String.format("SELECT * FROM compte WHERE %s=? AND %s=?;",login,password));
+            statement = createStatement("SELECT * FROM compte WHERE login=? AND password=?;");
             statement.setString(1, login);
             statement.setString(2, password);
             ResultSet rs = statement.executeQuery();
@@ -136,7 +134,7 @@ public class DAOCompte extends DAO implements IDAOCompte{
     @Override
     public ArrayList<Compte> findByRole(Role role) {
         try {
-            statement = createStatement(String.format("SELECT * FROM compte WHERE %s=?;",roleId));
+            statement = createStatement("SELECT * FROM compte WHERE roleId=?;");
             statement.setInt(1,role.getId());
 
         } catch (SQLException e) {

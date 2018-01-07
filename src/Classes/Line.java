@@ -1,15 +1,16 @@
 package Classes;
-
+import java.util.ArrayList;
 public class Line {
     private int idLine;
     private Form form ;
     private int idCommande;
     private int quantity;
-
+    private ArrayList<Personalization> persos=new ArrayList<Personalization>();
     /**
      *
      * @return int ( Commande ID)
      */
+
     public int getComamnde() {
         return idCommande;
     }
@@ -89,7 +90,13 @@ public class Line {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    public double getTotal() {
 
+        double r=0;
+        for(Personalization p : persos) r+=p.getTotal();
+        return r;
+
+    }
     @Override
     public String toString() {
         return String.format("%d\t%s\t%d",idCommande,form.getName(),quantity);

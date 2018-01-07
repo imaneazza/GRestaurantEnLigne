@@ -66,18 +66,18 @@ public class DAODetail extends DAO implements IDAODetail {
 
     @Override
     public int create(Detail o) {
-        return  executeQuery("INSERT INTO detail(obligatory,qteMix,qteMax,idForm,idingredient) Values(?,?,?,?,?);",o);
+        return  executeQuery(String.format("INSERT INTO detail(%s,%s,%s,%s,%s) Values(?,?,?,?,?);",obligatory,qteMin,qteMax,formId,ingredientId),o);
     }
 
     @Override
     public int update(Detail o) {
-        return  executeQuery("UPDATE detail SET obligatory=?,qteMix=?,qteMax=? WHERE idForm=? and idingredient=?;",o);
+        return  executeQuery(String.format("UPDATE detail SET %s=?,%s=?,%s=? WHERE %s=? and %s=?;",obligatory,qteMin,qteMax,formId,ingredientId),o);
 
     }
 
     @Override
     public int delete(int id,int ing) {
-        statement = createStatement("DELETE FROM detail WHERE idForm=? and idingredient=?");
+        statement = createStatement(String.format("DELETE FROM detail WHERE %s=? and %s=?;",formId,ingredientId));
         try {
             statement.setInt(1, id);
             statement.setInt(2, ing);
@@ -89,7 +89,7 @@ public class DAODetail extends DAO implements IDAODetail {
     }
     @Override
     public int delete(int id) {
-        statement = createStatement("DELETE FROM detail WHERE idForm=? ");
+        statement = createStatement(String.format("DELETE FROM detail WHERE %s=? ",formId));
         try {
             statement.setInt(1, id);
             return executeToInt();
@@ -98,11 +98,11 @@ public class DAODetail extends DAO implements IDAODetail {
         }
         return 0;
     }
-    public Detail find(int id , int ing ) {
+    public Detail find(int id_form , int id_ingredient ) {
       try {
-            statement = createStatement("SELECT * FROM detail WHERE idForm=? and idingredient=?;");
-            statement.setInt(1, id);
-            statement.setInt(2,ing);
+            statement = createStatement(String.format("SELECT * FROM detail WHERE %s=? and %s=?;",formId,ingredientId));
+            statement.setInt(1, id_form);
+            statement.setInt(2,id_ingredient);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) return ResultSetToObject(rs);
         } catch (SQLException ex) {
@@ -129,7 +129,7 @@ public class DAODetail extends DAO implements IDAODetail {
      */
     @Override
     public ArrayList<Detail> getAll() {
-        statement = createStatement("SELECT * FROM detail");
+        statement = createStatement("SELECT * FROM detail;");
         return executeToArray();
     }
 
@@ -140,14 +140,14 @@ public class DAODetail extends DAO implements IDAODetail {
     @Override
     public ArrayList<Detail> findByForm(Form o) {
 
-        return findByInt("SELECT * FROM detail WHERE idForm=?",o.getId());
+        return findByInt(String.format("SELECT * FROM detail WHERE %s=?;",formId),o.getId());
 
     }
 
     @Override
     public ArrayList<Detail> findByIngrediant(Ingrediant o) {
 
-        return findByInt("SELECT * FROM detail WHERE idingredient=?",o.getId());
+        return findByInt(String.format("SELECT * FROM detail WHERE %s=?;",ingredientId),o.getId());
 
     }
 

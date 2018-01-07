@@ -47,8 +47,12 @@ public class Commande {
         return id+"\t"+date.toString()+"\t"+address+"\t"+mode.toString()+"\t"+getTotal()+"\t"+client.toString();
     }
 
-    private int getTotal() {
-        return 0;
+    public double getTotal() {
+
+        double r=0;
+        for(Line l : lines) r+=l.getTotal();
+        return r;
+
     }
 
     public int getId() {

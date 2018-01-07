@@ -23,7 +23,6 @@ public class DAOCategory extends DAO implements IDAOCategory {
     private String id = "id";
     private String name = "name";
     private String imageSource = "imageSource";
-    private DAOIngredient daoIngredient=new DAOIngredient();
 
     @Override
     public int executeQuery(String query, Category o) {
@@ -49,7 +48,6 @@ public class DAOCategory extends DAO implements IDAOCategory {
                 list.add(category);
             }
             return list;
-
         } catch (SQLException ex) {
             Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -71,14 +69,13 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public int create(Category o) {
-        o.setId(executeQuery("INSERT INTO category(name,imageSource,id) Values(?,?,?);",o));
+        o.setId(executeQuery(String.format("INSERT INTO category(%d,%d,%d) Values(?,?,?);",name,imageSource,id),o));
         return o.getId();
     }
 
     @Override
     public int update(Category o) {
-
-        return  executeQuery("UPDATE category SET name=?,imageSource=? WHERE id=?;",o);
+        return  executeQuery(String.format("UPDATE category SET %s=?,%s=? WHERE %s=?;",name,imageSource,id),o);
     }
 
     @Override
@@ -110,7 +107,7 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public ArrayList<Category> getAll() {
-            statement = createStatement("SELECT * FROM category ");
+            statement = createStatement("SELECT * FROM category;");
             return executeToArray();
     }
 
@@ -118,7 +115,7 @@ public class DAOCategory extends DAO implements IDAOCategory {
     public Category ResultSetToObject(ResultSet rs) {
         try {
             Category category = new Category(rs.getInt(id), rs.getString(name), rs.getString(imageSource));
-            category.setIngrediants(daoIngredient.findByCategory(category));
+            category.setIngrediants((new DAOIngredient()).findByCategory(category));
             return category;
         } catch (SQLException ex) {
             Logger.getLogger(DAOCategory.class.getName()).log(Level.SEVERE, null, ex);
