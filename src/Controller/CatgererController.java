@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -34,11 +35,7 @@ import java.util.ResourceBundle;
 public class CatgererController implements Initializable {
     @FXML
     private GridPane gpanel;
-    @FXML
-    private Pane pan1;
 
-    @FXML
-    private Pane pan11;
     MetierCategory cat=new MetierCategory();
     ArrayList<Category> liste=cat.getAll();
     @FXML
@@ -86,21 +83,31 @@ public class CatgererController implements Initializable {
         gpanel.getColumnConstraints().clear();
         gpanel.getColumnConstraints().addAll(column1,column1,column1);
         gpanel.getRowConstraints().addAll(constraint,constraint);
-        gpanel.setStyle("-fx-background-color: white;");
-        ImageView im;
-
-
-int a;
-        for(int i=0;i<3;i++) {
-            a = pageIndex * 6 + i;
+         ImageView im;
+        int a;
+        for(int i=0;i<6;i++) {
+            Pane pane=new Pane();
+            a=(pageIndex * 6) + i;
             if (liste.size() > a) {
                 Category category = liste.get(a);
-                im = new ImageView(new Image(category.getImageSource()));
-                im.setFitHeight(150);
-                im.setFitWidth(150);
+                if(category.getImageSource().length()==0)
+                    im = new ImageView(new Image("images/categories/no.jpg"));
+                else im = new ImageView(new Image(category.getImageSource()));
+                im.setFitHeight(130);
+                im.setFitWidth(130);
+                im.setX(40);
 
-                gpanel.add(im, i, (i < 4) ? 0 : 1);
-                gpanel.setHalignment(im, HPos.CENTER);
+                pane.getChildren().add(0,im);
+                Label label=new Label("Catégorie : "+category.getName());
+                label.setPrefWidth(gpanel.getPrefWidth()/3);
+                label.setFont( Font.font("Cambria", FontWeight.BOLD,17));
+                label.setAlignment(Pos.CENTER);
+                label.setTranslateY(150);
+                label.setTranslateX(0);
+                pane.getChildren().add(1,label);
+
+                gpanel.add(pane, i%3, (i <3) ? 0 : 1);
+                gpanel.setHalignment(pane, HPos.CENTER);
 
             }
         }
@@ -118,73 +125,25 @@ int a;
     private void addPane(int colIndex, int rowIndex ,int page) {
         Pane pane = new Pane();
         int a;
-             a=(page * 6) + (rowIndex*2)+colIndex;
-        System.out.println(liste.size()+"hellow");
+             a=(page * 6) + (rowIndex*3)+colIndex;
             if (liste.size() > a) {
                 pane.setOnMouseClicked(e -> {
-                    Stage stage = new Stage();
-                    Parent root = null;
-                    try {
-                        FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("/Views/Catinfo.fxml"));
-                        root = loader.load();
-                        CatInfoController cat = loader.getController();
-                        System.out.println("iddd"+liste.get(a).getId());
-                        cat.setId_cat(liste.get(a).getId());
-                        cat.setTable();
-                        gpanel.getScene().getWindow().hide();
-                        Scene x = new Scene(root);
-                        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-                        stage.setScene(x);
-                        stage.setTitle("Détail Categorie");
-                        stage.setResizable(false);
-                        stage.setWidth(800);
-                        stage.setHeight(600);
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-
-                    stage.initOwner(
-                            ((Node) e.getSource()).getScene().getWindow());
-                    stage.show();
+            new Callpages().callcatdetail(e,  liste.get(a).getId(),pane);
                 });
             }
         gpanel.add(pane, colIndex, rowIndex);
     }
     @FXML
     void GoToOffre() throws IOException {
-        Stage primaryStage=new Stage();
-        gpanel.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
-        primaryStage.setTitle("Creation Offre Page");
-
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        primaryStage.setScene(x);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        new Callpages().calllisteoffres(gpanel);
     }
     @FXML
     void catGerer() throws IOException {
-        Stage primaryStage=new Stage();
-        gpanel.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
-        primaryStage.setTitle("Gestion catégories des ingrédients Page");
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        primaryStage.setScene(x);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+
+        new Callpages().callcatliste(gpanel);
     }
     @FXML
     void addfct() throws IOException {
-        Stage primaryStage=new Stage();
-        gpanel.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/addcat.fxml"));
-        primaryStage.setTitle("Ajouter Catégorie Page");
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        primaryStage.setScene(x);
-        primaryStage.setResizable(false);
-        primaryStage.show();    }
+        new Callpages().calladdcat(gpanel);
+         }
 }

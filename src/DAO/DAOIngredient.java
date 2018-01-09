@@ -113,7 +113,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     @Override
     public Ingrediant find(int id) {
         try {
-            statement = createStatement(String.format("SELECT * FROM ingredient WHERE %s=?;",id));
+            statement = createStatement(String.format("SELECT * FROM ingredient WHERE %s=?;",this.id));
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -134,7 +134,7 @@ public class DAOIngredient extends DAO implements IDAOIngredient {
     @Override
     public Ingrediant ResultSetToObject(ResultSet rs) {
         try {
-            Ingrediant ingredient = new Ingrediant(
+           Ingrediant ingredient = new Ingrediant(
                     rs.getInt(id),
                     rs.getString(name),
                     StringToUniteMesure(rs.getString(uniteMesure)),

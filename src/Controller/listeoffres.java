@@ -12,14 +12,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -47,55 +48,49 @@ public class listeoffres implements Initializable {
         int a=liste.size()/6;
         if(liste.size()%6!=0)a++;
         page.setPageCount(a);
+        System.out.println(liste.size());
        page.setPageFactory((Integer pageIndex) -> createPage(pageIndex));
 
     }
 
     @FXML
     void gotoliste(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = null;
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Views/listeoffres.fxml"));
-        root = loader.load();
-
-        menu.getScene().getWindow().hide();
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        stage.setScene(x);
-        stage.setTitle("Liste des Offres ");
-        stage.setResizable(false);
-        stage.setWidth(800);
-        stage.setHeight(600);
-        stage.show();
-        //stage.initModality(Modality.WINDOW_MODAL);
+       new Callpages().calllisteoffres(gpanel);
     }
     public GridPane createPage(int pageIndex) {
-
         gpanel.setAlignment(Pos.TOP_CENTER);
-
         ColumnConstraints column1 = new ColumnConstraints();
-        column1.setPercentWidth(100/3);
+        column1.setPercentWidth(33);
         RowConstraints constraint=new RowConstraints();
         constraint.setPercentHeight(50);
         gpanel.getRowConstraints().clear();
         gpanel.getColumnConstraints().clear();
         gpanel.getColumnConstraints().addAll(column1,column1,column1);
         gpanel.getRowConstraints().addAll(constraint,constraint);
-        gpanel.setStyle("-fx-background-color: white;");
         ImageView im;
         for(int i=0;i<6;i++) {
             int a=(pageIndex * 6) + i;
             if (liste.size()>a) {
                     Offer x = liste.get(a);
-                im = new ImageView(new Image(x.getImageSource()));
+                Pane pane=new Pane();
+
+                     if(x.getImageSource().length()==0)  im = new ImageView(new Image("images/offres/default.png"));
+
+                         else im = new ImageView(new Image(x.getImageSource()));
                 im.setFitHeight(150);
                 im.setFitWidth(150);
-                if (i < 4)
-                    gpanel.add(im, i, 0);
-                else
-                    gpanel.add(im, i, 1);
-                gpanel.setHalignment(im, HPos.CENTER);
+                im.setX(40);
+                pane.getChildren().add(0,im);
+                Label label=new Label("Offre : "+x.getName());
+                label.setPrefWidth(gpanel.getPrefWidth()/3);
+                label.setFont( Font.font("Cambria", FontWeight.BOLD,17));
+                label.setAlignment(Pos.CENTER);
+                label.setTranslateY(150);
+                label.setTranslateX(20);
+                pane.getChildren().add(1,label);
+
+                gpanel.add(pane, i%3, (i <3) ? 0 : 1);
+                gpanel.setHalignment(pane, HPos.CENTER);
 
             }
         }
@@ -111,62 +106,23 @@ public class listeoffres implements Initializable {
 
     private void addPane(int colIndex, int rowIndex ,int page) {
         Pane pane = new Pane();
-        int a=(page * 6) + (rowIndex*2)+colIndex;
+        int a=(page * 6) + (rowIndex*3)+colIndex;
+        System.out.println(a);
         if (liste.size()>a) {
             pane.setOnMouseClicked(e -> {
-                Stage stage = new Stage();
-                Parent root = null;
-                try {
-                    FXMLLoader loader = new FXMLLoader();
+                new Callpages().calloffredetail(e,liste.get(a).getId(),gpanel);
 
-                    loader.setLocation(getClass().getResource("/Views/offreinfo.fxml"));
-                    root = loader.load();
-                    offreinfo offreController = loader.getController();
-                    offreController.setIdoffre(liste.get(a).getId());
-                    offreController.getdata();
-                    //get categorie
-                    gpanel.getScene().getWindow().hide();
-                    stage.setScene(new Scene(root));
-                    stage.setTitle("Détail Categorie");
-                    stage.setResizable(false);
-                    stage.setWidth(800);
-                    stage.setHeight(600);
-                    //stage.initModality(Modality.WINDOW_MODAL);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-
-                stage.initOwner(
-                        ((Node) e.getSource()).getScene().getWindow());
-                stage.show();
             });
         }
         gpanel.add(pane, colIndex, rowIndex);
     }
     @FXML
     void GoToOffre() throws IOException {
-        Stage primaryStage=new Stage();
-        gpanel.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
-        primaryStage.setTitle("Creation Offre Page");
-
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        primaryStage.setScene(x);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+       new Callpages().calladdoffre(gpanel);
     }
     @FXML
     void catGerer() throws IOException {
-        Stage primaryStage=new Stage();
-        gpanel.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
-        primaryStage.setTitle("Gestion catégories des ingrédients Page");
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        primaryStage.setScene(x);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        new Callpages().callcatliste(gpanel);
     }
 
 }

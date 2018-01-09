@@ -6,12 +6,8 @@ import DAO.DAORole;
 import DAO.DAOCompte;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -25,9 +21,8 @@ public class LoginController {
 
     @FXML
     void LoginAction(ActionEvent event) throws IOException {
-        //recherche login
-        DAOCompte userdao=new DAOCompte();
-        Compte compte =userdao.connect(txtUsername.getText(), txtPassword.getText());
+        DAOCompte comptedao=new DAOCompte();
+        Compte compte =comptedao.connect(txtUsername.getText(), txtPassword.getText());
         if(compte ==null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur d'Authentification");
@@ -44,20 +39,10 @@ public class LoginController {
             DAORole roles=new DAORole();
             Role role=roles.find(compte.getRoleId());
             if(role!=null){
-                if(role.getName().equalsIgnoreCase("Chef Cuisinier")){
                     ((Node)event.getSource()).getScene().getWindow().hide();
-                    Stage primaryStage=new Stage();
-                    Parent root = FXMLLoader.load(getClass().getResource("/Views/listeoffres.fxml"));
-
-                    primaryStage.setTitle("Liste Offres");
-                    Scene x=new Scene(root);
-                    x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-                    primaryStage.setScene(x);
-
-                    primaryStage.setResizable(false);
-                    primaryStage.show();
+                    new Callpages().calllisteoffres(null);
                 }
-            }
+
 
         }
 

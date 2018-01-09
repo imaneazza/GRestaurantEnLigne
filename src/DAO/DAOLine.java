@@ -105,6 +105,9 @@ public class DAOLine extends DAO implements IDAOLine  {
         try {
                 DAOForm form=new DAOForm();
             Line line = new Line(rs.getInt(idLine), form.find(rs.getInt(formID)), rs.getInt(commandeId),rs.getInt(qte));
+
+
+            // get personnalization
             form.getManager().close();
             return line;
         } catch (SQLException ex) {

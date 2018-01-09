@@ -87,8 +87,7 @@ private File file;
         stage.setWidth(800);
         stage.setHeight(600);
         stage.show();
-        //stage.initModality(Modality.WINDOW_MODAL);
-    }
+       }
     private void setExtFilters(FileChooser chooser){
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("All Images", "*.jpg"),

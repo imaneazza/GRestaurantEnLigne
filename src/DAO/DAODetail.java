@@ -164,7 +164,7 @@ public class DAODetail extends DAO implements IDAODetail {
     @Override
     public Detail ResultSetToObject(ResultSet rs) {
         try {
-            Detail o = new Detail(
+           Detail o = new Detail(
                     rs.getInt(formId),
                     daoIngredient.find(rs.getInt(ingredientId)),
                     rs.getBoolean(obligatory), rs.getInt(qteMin),

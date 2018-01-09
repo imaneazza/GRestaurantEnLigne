@@ -1,7 +1,11 @@
 package Controller;
 
+import Classes.Detail;
+import Classes.Form;
 import Classes.Offer;
 import DAO.DAOOffer;
+import Metier.MetierDetail;
+import Metier.MetierIngredient;
 import Metier.MetierOffer;
 import beans.DetailOffre;
 import beans.ingredients;
@@ -24,8 +28,15 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class offreinfo implements Initializable{
@@ -42,7 +53,7 @@ public class offreinfo implements Initializable{
 
 
     @FXML
-    private TableColumn<DetailOffre, Integer> max;
+    private TableColumn<DetailOffre, Double> max;
 
     @FXML
     private TableColumn<DetailOffre, String> libelle;
@@ -50,10 +61,9 @@ public class offreinfo implements Initializable{
     @FXML
     private TableColumn<DetailOffre, Boolean> obligatoire;
     @FXML
-    private TableColumn<DetailOffre, Integer> min;
+    private TableColumn<DetailOffre, Double> min;
 
-    @FXML
-    private Button update;
+
 
     @FXML
     private MenuBar menu;
@@ -75,10 +85,7 @@ public class offreinfo implements Initializable{
     @FXML
     private TableView<DetailOffre> table;
 
-
-
-
-
+    private static ObservableList<DetailOffre> ingredientsliste = FXCollections.observableArrayList();
 
     public void setIdingredient(long idingredient) {
         this.idingredient = idingredient;
@@ -99,108 +106,91 @@ public class offreinfo implements Initializable{
 
     @FXML
     void gotoliste(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = null;
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Views/listeoffres.fxml"));
-        root = loader.load();
 
-        menu.getScene().getWindow().hide();
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        stage.setScene(x);
-        stage.setTitle("Liste des Offres ");
-        stage.setResizable(false);
-        stage.setWidth(800);
-        stage.setHeight(600);
-        stage.show();
-        //stage.initModality(Modality.WINDOW_MODAL);
+        new Callpages().calllisteoffres(pane);
     }
 
 
-
-     private static ObservableList<DetailOffre> ingredientsliste = FXCollections.observableArrayList();
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    //getingredients by offre
 
 
     }
-public void getdata(){
+    public void getdata(){
         offre=metierOffer.find(idoffre);
     txtlibelle.setText(offre.getName());
     ObservableList<String> options =
             FXCollections.observableArrayList();
-    // formes
-    options.add("Grand");
+
+    for(Form f:offre.getForms())
+        options.add(f.getName());
 
     formes.setItems(options);
     formes.setValue("Select forme ");
     formes.valueProperty().addListener(new ChangeListener<String>() {
         @Override public void changed(ObservableValue ov, String t, String t1) {
-
-            System.out.println(t1);
-            //getforme
             showtable();
         }
     });
-    img.setImage(new Image("images/offres/offre" + idoffre+ ".jpg"));
+    if(offre.getImageSource().length()==0)img.setImage(new Image("images/offres/default.png"));
+    else img.setImage(new Image(offre.getImageSource()));
 
 }
 
     @FXML
     void GoToOffre() throws IOException {
-        Stage primaryStage=new Stage();
-        menu.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/Offre.fxml"));
-        primaryStage.setTitle("Creation Offre Page");
-
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        primaryStage.setScene(x);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+       new Callpages().calladdoffre(pane);
     }
     @FXML
     void catGerer() throws IOException {
-        Stage primaryStage=new Stage();
-        menu.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/Catgerer.fxml"));
-        primaryStage.setTitle("Gestion catégories des ingrédients Page");
 
-        Scene x=new Scene(root);
-        x.getStylesheets().add(getClass().getResource("/Style/Style.css").toExternalForm());
-        primaryStage.setScene(x);
-        primaryStage.setResizable(false);
-        primaryStage.show();
-    }
-
-
-
-    @FXML
-    void updateoffre(ActionEvent event) {
-
-        System.out.println(idoffre);
-
+    new Callpages().callcatliste(pane);
     }
 
     @FXML
-    void deleteoffre(ActionEvent event) {
+    void deleteoffre(ActionEvent event) throws IOException {
 
+        if(offre.getImageSource().length()>0){
+            try
+            {
+                Files.deleteIfExists(Paths.get("C:/Users/Imane azza/Desktop/GRestaurantEnLigne/GRestaurantEnLigne/src/"+offre.getImageSource()));
+            }
+            catch(NoSuchFileException e)
+            {
+                System.out.println("No such file/directory exists");
+            }
+            catch(DirectoryNotEmptyException e)
+            {
+                System.out.println("Directory is not empty.");
+            }
+            catch(IOException e)
+            {
+                System.out.println("Invalid permissions.");
+            }
+
+            System.out.println("Deletion successful.");
+        }
+        metierOffer.delete(offre.getId());
+        new Callpages().calllisteoffres(pane);
     }
 
     void showtable() {
+
+        System.out.println(formes.getSelectionModel().getSelectedIndex());
         ingredientsliste.clear();
-        ingredientsliste.addAll(new DetailOffre(10,"Ingredient1",15,10,true),
-                new DetailOffre(10,"Ingredient2",100,80,false),
-                new DetailOffre(10,"Ingredient3",2,1,true));
+        MetierDetail det=new MetierDetail();
+       ArrayList<Detail> details=det.findByForm(offre.getForms().get(formes.getSelectionModel().getSelectedIndex()));
+for(Detail d:details){
+    ingredientsliste.add(new DetailOffre(formes.getSelectionModel().getSelectedIndex(),
+            d.getIngredient().getName(),d.getMax(),d.getMin(),d.getObligatory()));
+}
 
         libelle.setCellValueFactory(new PropertyValueFactory<DetailOffre,String>("libelle"));
-        max.setCellValueFactory(new PropertyValueFactory<DetailOffre,Integer>("quantitemax"));
-        min.setCellValueFactory(new PropertyValueFactory<DetailOffre,Integer>("quantitemin"));
+        max.setCellValueFactory(new PropertyValueFactory<DetailOffre,Double>("quantitemax"));
+        min.setCellValueFactory(new PropertyValueFactory<DetailOffre,Double>("quantitemin"));
         obligatoire.setCellValueFactory(new PropertyValueFactory<DetailOffre,Boolean>("obligatory"));
 
         table.setItems(ingredientsliste);

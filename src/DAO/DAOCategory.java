@@ -69,7 +69,7 @@ public class DAOCategory extends DAO implements IDAOCategory {
 
     @Override
     public int create(Category o) {
-        o.setId(executeQuery(String.format("INSERT INTO category(%d,%d,%d) Values(?,?,?);",name,imageSource,id),o));
+        o.setId(executeQuery(String.format("INSERT INTO category(%s,%s,%s) Values(?,?,?);",name,imageSource,id),o));
         return o.getId();
     }
 

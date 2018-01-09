@@ -5,15 +5,15 @@ import javafx.beans.property.*;
 public class DetailOffre {
     private final SimpleLongProperty Forme;
     private final SimpleStringProperty libelle;
-    private final SimpleIntegerProperty quantitemin,quantitemax;
+    private final SimpleDoubleProperty quantitemin,quantitemax;
     private final SimpleBooleanProperty  obligatory;
 
 
-    public DetailOffre(long forme, String libelle, int max, int min,boolean obl) {
+    public DetailOffre(long forme, String libelle, double max, double min,boolean obl) {
         this.Forme = new SimpleLongProperty(forme);
         this.libelle = new SimpleStringProperty(libelle);
-        this.quantitemax = new SimpleIntegerProperty(max);
-        this.quantitemin = new SimpleIntegerProperty(min);
+        this.quantitemax = new SimpleDoubleProperty(max);
+        this.quantitemin = new SimpleDoubleProperty(min);
         this.obligatory=new SimpleBooleanProperty(obl);
 
 
@@ -37,12 +37,12 @@ public class DetailOffre {
 
 
 
-    public int getQuantitemin() {
+    public double getQuantitemin() {
         return quantitemin.get();
     }
 
 
-    public int getQuantitemax() {
+    public double getQuantitemax() {
         return quantitemax.get();
     }
 

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CatgererController">
+<Pane prefHeight="600.0" prefWidth="800.0" styleClass="paneall" stylesheets="@../Style/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CatgererController">
    <children>
       <MenuBar fx:id="menu" layoutX="-3.0" layoutY="-1.0" prefHeight="39.0" prefWidth="820.0">
          <menus>
@@ -28,16 +28,7 @@
             <Menu mnemonicParsing="false" text="Activer les Offres" />
          </menus>
       </MenuBar>
-      <Pane fx:id="pan1" layoutY="28.0" prefHeight="93.0" prefWidth="820.0" style="-fx-background-color: red;">
-         <children>
-            <ImageView fitHeight="73.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pictures/logo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane fx:id="pan11" layoutY="121.0" prefHeight="477.0" prefWidth="820.0" style="-fx-background-color: white;">
+      <Pane fx:id="pan11" layoutY="39.0" prefHeight="559.0" prefWidth="820.0">
          <children>
             <GridPane fx:id="gpanel" alignment="TOP_CENTER" layoutX="56.0" layoutY="99.0" prefHeight="260.0" prefWidth="677.0">
                <columnConstraints>
@@ -50,7 +41,7 @@
                   <RowConstraints maxHeight="182.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Pagination fx:id="page" layoutY="75.0" prefHeight="399.0" prefWidth="783.0" />
+            <Pagination fx:id="page" layoutY="75.0" prefHeight="458.0" prefWidth="783.0" stylesheets="@../Style/Style.css" />
             <Label alignment="CENTER" layoutX="223.0" layoutY="15.0" prefHeight="47.0" prefWidth="300.0" text="Choose a category" textAlignment="CENTER" textFill="#ff0404">
                <font>
                   <Font name="Cambria Bold Italic" size="26.0" />
