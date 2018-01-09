@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controller/Callpages.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CatgererController.java" afterPath="$PROJECT_DIR$/src/Controller/CatgererController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/LoginController.java" afterPath="$PROJECT_DIR$/src/Controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/OffreController.java" afterPath="$PROJECT_DIR$/src/Controller/OffreController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/listeoffres.java" afterPath="$PROJECT_DIR$/src/Controller/listeoffres.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/offreinfo.java" afterPath="$PROJECT_DIR$/src/Controller/offreinfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOCategory.java" afterPath="$PROJECT_DIR$/src/DAO/DAOCategory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAODetail.java" afterPath="$PROJECT_DIR$/src/DAO/DAODetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOIngredient.java" afterPath="$PROJECT_DIR$/src/DAO/DAOIngredient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DAO/DAOLine.java" afterPath="$PROJECT_DIR$/src/DAO/DAOLine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/Catgerer.fxml" afterPath="$PROJECT_DIR$/src/Views/Catgerer.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/listeoffres.fxml" afterPath="$PROJECT_DIR$/src/Views/listeoffres.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/offreinfo.fxml" afterPath="$PROJECT_DIR$/src/Views/offreinfo.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/beans/DetailOffre.java" afterPath="$PROJECT_DIR$/src/beans/DetailOffre.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -614,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515335707555</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="with graphics">
+      <created>1515511998784</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1515511998784</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -717,7 +712,8 @@
     <MESSAGE value="GRestaurant Project" />
     <MESSAGE value="had chi li knt 5demt nhar ssbt" />
     <MESSAGE value="LAST ONE I GUESS :p" />
-    <option name="LAST_COMMIT_MESSAGE" value="LAST ONE I GUESS :p" />
+    <MESSAGE value="with graphics" />
+    <option name="LAST_COMMIT_MESSAGE" value="with graphics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
